@@ -1,1 +1,15 @@
-<h1>Estamos en el Login</h1>
+<div id="loginPage">
+	<h2>Login</h2>
+	<form>
+		<input ng-model="user.username" type="text" name="username" placeholder="username" />
+		<br/>
+		<input ng-model="user.password" type="password" name="password" placeholder="password" />
+		<br/>
+		<br/>
+		<input type="submit" value="Acceder" />
+	</form>
+	<br/>
+	<br/>
+	<h1>Hello {{ user.username }}</h1>
+	<p>su contraseña es: {{user.password}}</p>
+</div>

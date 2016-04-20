@@ -2,21 +2,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <!---------------------------------------------- Encabezado ----------------------------------------------------->
+
 <head>
 	<meta charset="UTF-8">
 	<title>Santalucía - Unidos para el Éxito</title>
 
 	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="template/css/style.css" />
 </head>
+
 <!-- Cuerpo -->
-<body ng-app="App">
+<body ng-app='miapp'>
 
-	<h1>INDEX</h1>
-
+	<div ui-view></div>
 
 	<!--------------------------- Scripts ------------------------------>
 	<script type="text/javascript">
-		urlApi = 'http://pruebas.area-innova.com:8888/';  <!--- URL DE LA API ---->
+		urlApi = 'http://pruebas.area-innova.com:8888/'; <!--- URL DE LA API ---->
 	</script>
 	<!---------- Angular Js Libs -------------->
 	<script type="text/javascript" src="libs/angular.min.js"></script>
@@ -32,9 +35,10 @@
 	<!---------- Controladores ---------------->
 	<script type="text/javascript" src="controller/loginController.js"></script>
 
-	<!---------- App -------------------------->
+	<!---------- App ------------------------->
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="routes.js"></script>
 
 </body>
+
 </html>

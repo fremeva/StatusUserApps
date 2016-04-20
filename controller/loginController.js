@@ -2,6 +2,8 @@
 
 	var controllerModule = angular.module('AppControllers');
 
-	//controllerModule.controller('loginController');
+	controllerModule.controller('loginController', function($scope){
+		$scope.user = {};
+	});
 
 })();
