@@ -9,28 +9,32 @@
 	<!-- CSS -->
 </head>
 <!-- Cuerpo -->
-<body ng-app="santaluciaApp">
+<body ng-app="App">
 
-
+	<h1>INDEX</h1>
 
 
 	<!--------------------------- Scripts ------------------------------>
+	<script type="text/javascript">
+		urlApi = 'http://pruebas.area-innova.com:8888/';  <!--- URL DE LA API ---->
+	</script>
 	<!---------- Angular Js Libs -------------->
 	<script type="text/javascript" src="libs/angular.min.js"></script>
-	<script type="text/javascript" src="libs/angular-ui-router.js"></script>
+	<script type="text/javascript" src="libs/angular-ui-router.min.js"></script>
 
 	<!---------- Modulos ---------------------->
-	<script type="text/javascript" src="modules/statusUser.js"></script>
+	<script type="text/javascript" src="moduleRegistration.js"></script>
+
+	<!---------- Servicios -------------------->
+	<script type="text/javascript" src="services/authService.js"></script>
+	<script type="text/javascript" src="services/userService.js"></script>
+
+	<!---------- Controladores ---------------->
+	<script type="text/javascript" src="controller/loginController.js"></script>
 
 	<!---------- App -------------------------->
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="routes.js"></script>
-
-	<!---------- Servicios -------------------->
-	<script type="text/javascript" src="app.js"></script>
-
-	<!---------- Controladores ---------------->
-	<script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
