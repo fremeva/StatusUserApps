@@ -1,8 +1,30 @@
 (function () {
-	"use strict";
+	var miapp = angular.module('miapp');
+	miapp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('/login');
+		$stateProvider
+			.state('login', {
+						url: "/login"
+						, templateUrl: 'template/views/login.html'
+						, controller: 'loginController'
+					})
+					.state('home', {
+						url: '/home'
+						, templateUrl: 'template/views/home.html'
+					})
+					.state('home.status', {
+						url: '/status'
+						, templateUrl: 'template/views/status.html'
+						, controller: 'statusController'
+					})
+	}])
 
-	angular.module('App')
-		.config(['$stateProvider', '$urlRouterProvider', '$rootScope', '$location',
+})();
+
+
+
+
+/*miapp.config(['$stateProvider', '$urlRouterProvider', '$rootScope', '$location',
 			function ($stateProvider, $urlRouterProvider, $rootScope, $location) {
 				$urlRouterProvider.otherwise("/");
 				$stateProvider
@@ -29,5 +51,4 @@
 						, templateUrl: 'template/views/status.html'
 						, controller: 'statusController'
 					})
-        		}]);
-})();
+        		}]);*/

@@ -1,11 +1,6 @@
 (function () {
-	var App = angular.module("App", [
-		'ui.router'
-		, 'AppControllers'
-		, 'AppServices'
-	]);
-
-	App.run(
+	var miapp = angular.module("miapp");
+	miapp.run(
         function($rootScope, $templateCache){
             $rootScope.$on('$viewContentLoaded', function() {
                 $templateCache.removeAll();
@@ -14,5 +9,8 @@
             });
         }
     );
+	miapp.controller('micontrolador', function($scope){
+		$scope.sometext = 'test';
+	});
 
 })();
