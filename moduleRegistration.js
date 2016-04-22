@@ -1,5 +1,8 @@
 (function () {
-	angular.module('AppControllers', []);
-	angular.module('AppServices', []);
+	angular.module('AppControllers', []);  // Modulo de todos los controladores de la aplicacion.
+	angular.module('AppServices', []);     // Modulo de todos los servicios de la aplicacion.
+
+	//Modulo Principal de la Aplicacion.
 	angular.module("miapp", ['ui.router','AppControllers','AppServices']);
+
 })();

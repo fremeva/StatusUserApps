@@ -1,14 +1,15 @@
 <div id="loginPage">
-	<h2>Login</h2>
-	<form>
-		<input ng-model="user.username" type="text" name="username" placeholder="username" />
+	<h2>Inicio de sesión</h2>
+	<form name="mainLoginForm">
+		<input ng-model="user.username" type="text" name="username" placeholder="username" required />
+		<br />
+		<input ng-model="user.password" type="password" name="password" placeholder="password" required/>
 		<br/>
-		<input ng-model="user.password" type="password" name="password" placeholder="password" />
 		<br/>
-		<br/>
-		<input type="submit" value="Acceder" disabled/>
+		<button
+				type="button"
+				class="btn btn-primary"
+				ng-disabled="mainLoginForm.$invalid"
+				ng-click="login(user)">Acceder</button>
 	</form>
-	<br/>
-	<br/>
-	<button ui-sref="home" value="Ir a Home">Ir a Home</button>
 </div>

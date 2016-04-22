@@ -1,5 +1,6 @@
 (function () {
 	var miapp = angular.module("miapp");
+
 	miapp.run(
         function($rootScope, $templateCache){
             $rootScope.$on('$viewContentLoaded', function() {
@@ -9,8 +10,5 @@
             });
         }
     );
-	miapp.controller('micontrolador', function($scope){
-		$scope.sometext = 'test';
-	});
 
 })();
