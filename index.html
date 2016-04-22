@@ -17,10 +17,14 @@
 <body ng-app='miapp'>
 
 	<div ng-controller="navController">
-		<div ng-show="loggedIn"><input type="button" class="right" value="Logout" ng-click="logout()" /></div>
+		<div ng-show="loggedIn">
+			<input type="button" class="right" value="Logout" ng-click="logout()" />
+		</div>
 		<!--<div class="right" ng-show="!loggedIn"><a ng-click="login()">Login</a></div>-->
 		<div class="limp"></div>
 	</div>
+
+	<h3 ng-show="loggedIn">Bienvenido {{userNameSession}}</h3>
 
 	<div ui-view></div>
 
@@ -44,6 +48,8 @@
 	<!---------- Controladores ---------------->
 	<script type="text/javascript" src="controller/navController.js"></script>
 	<script type="text/javascript" src="controller/loginController.js"></script>
+	<script type="text/javascript" src="controller/statusController.js"></script>
+
 
 	<!---------- App ------------------------->
 	<script type="text/javascript" src="app.js"></script>

@@ -4,7 +4,7 @@
 	<!----- Encabezado ----->
 	<header id="header-status">
 		<div>
-			<a href="#">STATUS</a>
+			<a ui-sref="status">STATUS</a>
 		</div>
 	</header>
 
@@ -14,9 +14,9 @@
 			<div class="cont-info-usuario">
 				<img src="template/img/avatar.png" class="left img-avatar" />
 				<ul class="right infoUser">
-					<li>NickName</li>
-					<li>Nombre Apellido</li>
-					<li>Email</li>
+					<li>{{user.username}}</li>
+					<li>{{user.nombre + ' '+ user.apellidos }}</li>
+					<li>{{user.email}}</li>
 					<li>Departamento</li>
 					<li>Empresa Grupo</li>
 					<li>Ciudad</li>

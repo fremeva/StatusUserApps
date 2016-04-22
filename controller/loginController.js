@@ -9,15 +9,19 @@
 			$scope.login = function(user) {
 				authService.login(user).then( function successCallBack(response) {
 
-					$rootScope.loggedIn = true;
 					$window.localStorage.token = response.data.token;
 					var payload = JSON.parse($window.atob(response.data.token.split('.')[1]));
 					console.log(payload);
+					$rootScope.loggedIn = true;
+					$rootScope.idUserLoggedIn = payload._id;
+					$rootScope.userNameSession = payload.username;
 					$location.path('/home');
 
 				}, function errorCallBack(response) {
 					delete $window.localStorage.token;
 					$rootScope.loggedIn =false;
+					$rootScope.idUserLoggedIn = '';
+					$rootScope.userNameSession = '';
 					$scope.error = true;
 
 				});

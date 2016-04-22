@@ -13,6 +13,8 @@
             authService.logout();
 			//delete $window.localStorage.token;
             $rootScope.loggedIn = false;
+			$rootScope.idUserLoggedIn = '';
+			$rootScope.userNameSession = '';
             $location.path('/');
         };
 
