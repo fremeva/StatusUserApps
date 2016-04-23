@@ -11,7 +11,6 @@
 
 					$window.localStorage.token = response.data.token;
 					var payload = JSON.parse($window.atob(response.data.token.split('.')[1]));
-					console.log(payload);
 					$rootScope.loggedIn = true;
 					$rootScope.idUserLoggedIn = payload._id;
 					$rootScope.userNameSession = payload.username;

@@ -6,7 +6,7 @@
             $rootScope.$on('$viewContentLoaded', function() {
                 $templateCache.removeAll();
                 //localStorage.clear();
-                console.log('Cache Limpia')
+                //console.log('Cache Limpia')
             });
         }
     );

@@ -17,6 +17,7 @@
 						.state('home', {
 							url: '/home'
 							, templateUrl: 'template/views/home.html'
+							, controller: 'testController'
 						})
 						.state('status', {
 							url: '/status'
