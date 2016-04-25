@@ -8,7 +8,9 @@
 	<title>Santalucía - Unidos para el Éxito</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="template/css/style.css" />
 </head>
 
@@ -16,17 +18,43 @@
 
 <body ng-app='miapp'>
 
-	<div ng-controller="navController">
-		<div ng-show="loggedIn">
-			<input type="button" class="right" value="Logout" ng-click="logout()" />
-		</div>
+	<div ng-show="loggedIn" ng-controller="navController">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">StatusUserApp</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav" ng-show="loggedIn">
+						<li><a ui-sref="home">home</a></li>
+						<li><a ui-sref="status">status</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-show="loggedIn"><a>Hola! {{userNameSession}}</a></li>
+						<li ng-show="loggedIn"><a ng-click="logout()">Logout</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
 		<!--<div class="right" ng-show="!loggedIn"><a ng-click="login()">Login</a></div>-->
-		<div class="limp"></div>
+
 	</div>
 
-	<h3 ng-show="loggedIn">Bienvenido {{userNameSession}}</h3>
 
-	<div ui-view></div>
+	<div class="container">
+		<div ui-view></div>
+	</div>
+
 
 	<!--------------------------- Scripts ------------------------------>
 	<script type="text/javascript">

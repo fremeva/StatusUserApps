@@ -1,6 +1,10 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
+}
+
+body{
+	background-color: #eee;
 }
 
 .left {
@@ -11,7 +15,7 @@
 	float: right;
 }
 
-.limp{
+.limp {
 	clear: both;
 	line-height: 17;
 }
@@ -26,37 +30,48 @@
 	box-sizing: border-box;
 }
 
-
 .img-avatar {
 	display: block;
 	width: 150px;
+	padding: 5px;
+	box-sizing: border-box;
 }
 
 .cont-left {
 	width: 70%;
-
 }
 
 .cont-right {
 	width: 30%;
 }
 
-.infoUser > li{
+.list-none {
 	list-style: none;
-	font-family: roboto;
+}
+
+.info-user {
+	margin-left: 5px;
+}
+
+.info-user > li {
+	list-style: none;
+	margin-top: 3px;
+}
+
+.info-user-right {
 	margin-top: 5px;
-	font-size: 18px;
+	padding: 10px;
+	box-sizing: border-box;
+
 }
 
 .cont-info-usuario {
-	width: 340px;
 	box-sizing: border-box;
 	padding: 10px;
-
 }
 
 .icon-heart {
-	font-size: 70px ;
+	font-size: 70px;
 	color: red;
 	position: relative;
 }
@@ -69,7 +84,6 @@
 }
 
 #salud-section {
-
 	padding: 20px;
 	margin-left: 15px;
 	margin-right: 15ppx;
@@ -80,13 +94,12 @@
 	font-size: 40px;
 	font-weight: bold;
 	margin: 25px;
-
 }
 
 .label_etiqueta_salud {
 	display: block;
 	font-size: 20px;
-		text-align: center;
+	text-align: center;
 }
 
 .item-user-section {
@@ -103,3 +116,47 @@
 	font-size: 52Px;
 	color: darkblue;
 }
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+
+
