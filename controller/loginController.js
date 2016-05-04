@@ -4,7 +4,7 @@
 
 	controllerModule.controller('loginController', ['$scope', '$rootScope', '$window', '$location', 'authService',
 		function($scope, $rootScope, $window, $location, authService){
-			$scope.user = {username: 'opblanco', password: 'opblanco'};
+			$scope.user = {};
 
 			$scope.login = function(user) {
 				authService.login(user).then( function successCallBack(response) {

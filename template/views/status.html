@@ -1,30 +1,30 @@
 <div id="container-status">
 	<div class="row">
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 			<div class="cont-info-usuario left">
 				<img src="template/img/avatar.png" class="left img-avatar" />
 				<ul class="info-user right">
-					<li>Nick: {{user.username}}</li>
-					<li>Nombre y Apellido: {{user.nombre + ' '+ user.apellidos }}</li>
+					<li>Nick: {{user.nick}}</li>
+					<li>Nombre y Apellido: {{user.getFullName()}}</li>
 					<li>Email: {{user.email}}</li>
-					<li>Departamento:</li>
-					<li>Empresa Grupo:</li>
-					<li>Ciudad:</li>
+					<li>Departamento: {{user.departamento}}</li>
+					<li>Empresa Grupo: {{user.empresa_grupo}}</li>
+					<li>Ciudad: {{user.ciudad}}</li>
 				</ul>
 				<div class="limp"></div>
 			</div>
 		</div>
-		<div class="col-sm-3 info-user-right" >
+		<div class="col-sm-4 info-user-right">
 			<ul class="list-none right">
 				<li>
-					<label><i class="fa fa-heart"></i> Salud <span>70%</span></label>
+					<label><i class="fa fa-heart"></i> Salud <span>{{user.getEstadoSalud()}} %</span></label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Patrimonio <span>70%</span></label>
+					<label>Patrimonio: <span>{{user.getPatrimonio()}}</span></label>
 					<div class="cont-slider">
 
 					</div>
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<!--<div class="col-md-12">
 			<section id="salud-section">
 				<h1>Salud</h1>
 				<div class="item-user-section left">
@@ -81,162 +81,104 @@
 				<div class="limp"></div>
 			</section>
 
+		</div>-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<h5>Patrimonio</h5>
+			<h5>$ {{user.getPatrimonio()}} Dips</h5>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card ">
+						<div class="card-content text-center">
+							<h5> 1 unid </h5>
+							<h6>$ 10 Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6 class="text-center"> <i class="fa fa-building purple-text"></i> Propiedades</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5>{{user.cash}} Dips</h5>
+						</div>
+						<div class="card-action">
+							<h6 class="text-center"><i class="fa fa-money green-text"></i> Cash</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5>{{user.unidades_oro}} unid</h5>
+							<h6>$ 20000 Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6><i class="fa fa-tasks yellow-text"></i> Reservas Oro</h6>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-6">
+			<h5 class="text-center">Performance</h5>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6">test</div>
-		<div class="col-md-6">test</div>
+		<div class="col-md-12">
+			<h5>Propiedades construidas/ Barrios</h5>
+			<div class="row">
+				<div class="col-md-6" id="barrio-charts">
+
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+
+					<div class="panel panel-default">
+						<div class="panel-heading green">
+							<h5 class="text-center white-text"><i class="fa fa-money "></i> Cash</h5>
+						</div>
+						<div class="panel-body">
+							<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"> </canvas>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="col-md-6">
+
+
+					<div class="panel panel-default">
+						<div class="panel-heading yellow">
+							<h5 class="text-center white-text"><i class="fa fa-tasks"></i> Unidades de Oro</h5>
+						</div>
+						<div class="panel-body">
+							<canvas id="line" class="chart chart-line" chart-data="data_meses" chart-labels="labels_meses" chart-legend="true" chart-series="series_meses" chart-click="onClick">
+							</canvas>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12">test</div>
-	</div>
-</div>
-
-<h1>Salud: {{saludUser}}</h1>
-
-<p class="bg-success">{{user.sesion}}</p>
-
-
-
-<!----- Cuerpo de la pagina ----->
-<div id="body-status">
-
-	<!----- Encabezado ----->
-	<header id="header-status">
-		<div>
-			<a ui-sref="status">STATUS</a>
-		</div>
-	</header>
-
-	<!----- Sección de la informacion de usuarios ----->
-	<section id="user-section">
-		<div class="cont-left left">
-			<div class="cont-info-usuario">
-				<img src="template/img/avatar.png" class="left img-avatar" />
-				<ul class="right infoUser">
-					<li>{{user.username}}</li>
-					<li>{{user.nombre + ' '+ user.apellidos }}</li>
-					<li>{{user.email}}</li>
-					<li>Departamento</li>
-					<li>Empresa Grupo</li>
-					<li>Ciudad</li>
-				</ul>
-				<div class="limp"></div>
-			</div>
-		</div>
-		<div class="cont-right right">
-			<ul>
-				<li>
-					<label><i class="fa fa-heart"></i> Salud <span>70%</span></label>
-					<div class="cont-slider">
-
-					</div>
-				</li>
-				<li>
-					<i class="fa fa-hard"></i>
-					<label>Patrimonio <span>70%</span></label>
-					<div class="cont-slider">
-
-					</div>
-				</li>
-				<li>
-					<i class="fa fa-hard"></i>
-					<label>Logros <span>70%</span></label>
-					<div class="cont-slider">
-
-					</div>
-				</li>
-				<li>
-					<i class="fa fa-hard"></i>
-					<label>Progreso <span>70%</span></label>
-					<div class="cont-slider">
-
-					</div>
-				</li>
-
-				<li>
-					<i class="fa fa-hard"></i>
-					<label>Tiempo de juego <span>70%</span></label>
-					<div class="cont-slider">
-
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="limp"></div>
-	</section>
-
-	<!----- Sección de la salud de usuarios ----->
-	<section id="salud-section">
-		<h1>Salud</h1>
-		<div class="item-user-section left">
-			<div>
-				<i class="fa fa-heart icon-heart"></i>
-				<label class="label_icon-heart">Optima</label>
-			</div>
-			<div class="cont-slider"></div>
-		</div>
-		<div class="signo left">=</div>
-		<div class="item-user-section left">
-			<img src="template/img/monedas.png" />
-			<label class="label_valor_salud">$100.000 </label>
-			<label class="label_etiqueta_salud">Patrimonio</label>
-		</div>
-		<div class="signo left">+</div>
-		<div class="item-user-section left">
-			<i class="fa fa-line-chart icon-performace"></i>
-			<label class="label_valor_salud">75% <i class="fa fa-exchange"></i></label>
-
-			<label class="label_etiqueta_salud">Performance</label>
-		</div>
-		<div class="limp"></div>
-	</section>
-
-	<!----- Sección de la informacion del patrimonio y performace del usuarios ----->
-	<section id="patrimonio-performance-section">
-		<div class="patrimonio_sect">
-			<h3>Patrimonio</h3>
-			<label>$100.000 </label>
-
-			<div class="item-patrimonio">
-				<div>
-					<label>3 UDS</label>
-					<label>$ 70.000</label>
-				</div>
-				<label><i class="fa fa-propiedades"></i>Propiedades</label>
-			</div>
-			<div class="item-patrimonio">
-				<div>
-					<label>3 UDS</label>
-					<label>$ 70.000</label>
-				</div>
-				<label><i class="fa fa-propiedades"></i>Propiedades</label>
-			</div>
-			<div class="item-patrimonio">
-				<div>
-					<label>3 UDS</label>
-					<label>$ 70.000</label>
-				</div>
-				<label><i class="fa fa-propiedades"></i>Propiedades</label>
-			</div>
-		</div>
-		<div class="performance-sect">
-			<h3>Patrimonio</h3>
-			<label>$100.000 </label>
-			<i class="fa fa-arows"></i>
-			<div class="graficos"></div>
-		</div>
-	</section>
-
-	<!----- Sección de la informacion detallada del patrimonio de usuarios ----->
-	<section id="patrimonio-detalle-section">
-		<h3>Patrimonio</h3>
-		<div class="graficos"></div>
-	</section>
-
-	<!----- Sección de la informacion de los logros del usuarios ----->
-	<footer id="logro-section">
-		<h3>Mis logros</h3>
-	</footer>
-
 </div>

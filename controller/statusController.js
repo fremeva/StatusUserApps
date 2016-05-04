@@ -2,44 +2,62 @@
 
 	var controllerModule = angular.module('AppControllers');
 
-	controllerModule.controller('statusController', ['$scope', '$rootScope', '$location', 'userService', 'calculoStatusService',
-		function ($scope, $rootScope, $location, userService,calculoStatusService) {
-			var _idUser = $rootScope.idUserLoggedIn;
-			//Metodo para obtener la informacion del usuario
-			$scope.getInformacionUsuario = function (usuario_id) {
-				userService.getInfoUser(usuario_id).then(function successCallBack(response) {
-					$scope.user = response.data;
-
-					console.log($scope.user.sesion.energia);
-					console.log($scope.user.sesion.compromiso);
-					console.log($scope.user.sesion.conocimiento);
+	controllerModule.controller('statusController', ['$scope', '$rootScope', '$location', 'userService', 'userObjectService'
 
 
-					$scope.saludUser = calculoStatusService.getSaludUser($scope.user.sesion.energia, $scope.user.sesion.compromiso, $scope.user.sesion.conocimiento )
 
-					console.log($scope.saludUser);
+		, function ($scope, $rootScope, $location, userService, userObjectService) {
 
-				}, function errorCallBack(response) {
-					$location.path('/home');
+			var _idUser = $rootScope.idUserLoggedIn; // Id del usuario Autenticado.
 
-				});
-			};
+			//OBETNER LA INFORMACION DEL USUARIO AUTENTICADO
+			userService.getInfoUser(_idUser).then(function (response) {
+				userObjectService.setUserData(response.data);
+				//console.log(response.data);
+			}, function (error) {
+				$location.path('/home');
+			});
 
-			/*//Metodo para obtener la sesion del usuario
-			$scope.getUsuarioSesion = function (usuario_id) {
-				userService.getSessionUsuario(usuario_id).then(function successCallBack(response){
-					$scope.SessionUser = response.data;
-					console.log($scope.SessionUser);
+			//OBTENER EL BALANCE DEL USUARIO AUTENTICADO
+			userService.getBalance(_idUser).then(function (response) {
+				//userObjectService.setUserBalance(response.data);
+				console.log("########################################");
+				console.log(response.data);
+				console.log("########################################");
+				//console.log(response.data);
+			}, function (error) {
+				$location.path('/home');
+			});
 
-				}, function errorCallBack(response){
-					console.log(response);
-				});
-			} */
-
-			$scope.getInformacionUsuario(_idUser);
-			//$scope.getUsuarioSesion(_idUser);
+			$scope.showDonoutChar = function () {
+				$scope.labels_barrio = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+				$scope.data_barrio = [300, 500, 100];
+			}
 
 
+
+			$scope.showCashChar = function () {
+				$scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+				$scope.series = ['Series A', 'Series B'];
+				$scope.data = [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]];
+			}
+
+			$scope.showUnidOroChar = function () {
+				$scope.labels_meses = ["January", "February", "March", "April", "May", "June", "July"];
+				$scope.series_meses = ['Series A', 'Series B'];
+				$scope.data_meses = [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]];
+				$scope.onClick = function (points, evt) {
+					console.log(points, evt);
+				};
+			}
+
+
+			//$scope.getInformacionUsuario(_idUser);
+			$scope.user = userObjectService;
+			$scope.showDonoutChar();
+			$scope.showCashChar();
+			$scope.showUnidOroChar();
+			//console.log($scope.user);
 
 		}])
 

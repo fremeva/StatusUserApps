@@ -3,6 +3,6 @@
 	angular.module('AppServices', []);     // Modulo de todos los servicios de la aplicacion.
 
 	//Modulo Principal de la Aplicacion.
-	angular.module("miapp", ['ui.router','AppControllers','AppServices']);
+	angular.module("miapp", ['AppControllers','AppServices', 'ui.router', 'chart.js']);
 
 })();
