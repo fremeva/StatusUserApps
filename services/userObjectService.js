@@ -3,7 +3,28 @@
 	var servicesModule = angular.module('AppServices');
 
 	servicesModule.factory('userObjectService', [function () {
-		var userObject = {};
+
+		/*var _id = '';
+		var nick = '';
+		var nombre = '';
+		var apellido = '';
+		var dni = '';
+		var email = '';
+		var energia = 0;
+		var compromiso = 0;
+		var conocimiento = 0;
+		var empresa_grupo = '';
+		var departamento = '';
+		var ciudad = '';
+		var cash = 0;
+		var unidades_oro = 0;
+		var ciudadSession = [];
+
+		var interfaz = {
+			setUserData : function(data){
+
+			}
+		};*/
 
 
 		/*Propiedades
@@ -11,13 +32,13 @@
 		userObject.nombre = '';
 		userObject.apellido = '';
 		userObject.dni = '';
-		/*userObject.nick = '';
-		userData.energy = '';
-		userData.compromise = '';
-		userData.knowledge = '';
-		userData.ciudad = '';
-		userData.barrioSelected = '';*/
+		userObject.nick = '';
+		userObject.email = '';
+		userObject.energia = 0;
+		userObject.compromiso = 0;
+		userObject.conocimiento = 0;*/
 
+		userObject = {}
 		/*Métodos*/
 		userObject.setUserData = function (data) {
 			userObject._id = data._id;
@@ -29,7 +50,6 @@
 			userObject.empresa_grupo = data.empresa_grupo;
 			userObject.departamento = data.departamento;
 			userObject.ciudad = data.ciudad;
-
 			userObject.cash = data.sesion.monedero;
 			userObject.unidades_oro = data.sesion.unidades_oro;
 			userObject.conocimiento = data.sesion.conocimiento;
@@ -41,7 +61,7 @@
 		};
 
 		userObject.setUserBalance = function (data) {
-			//userObject.balance = data
+			userObject.balance = data;
 
 			//this.broadcastProp();
 		};
