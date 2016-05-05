@@ -1,0 +1,195 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.limp {
+	clear: both;
+	line-height: 17;
+}
+
+#body-status {
+	width: 980;
+	margin: 0 auto;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin-top: 15px;
+	padding: 35px;
+	box-sizing: border-box;
+}
+
+.img-avatar {
+	display: block;
+	width: 150px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.cont-left {
+	width: 70%;
+}
+
+.cont-right {
+	width: 30%;
+}
+
+.list-none {
+	list-style: none;
+}
+
+.info-user {
+	margin-left: 5px;
+}
+
+.info-user > li {
+	list-style: none;
+	margin-top: 3px;
+}
+
+.info-user-right {
+	margin-top: 5px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.cont-info-usuario {
+	box-sizing: border-box;
+	padding: 10px;
+}
+
+.icon-heart {
+	font-size: 70px;
+	color: red;
+	position: relative;
+}
+
+.label_icon-heart {
+	position: relative;
+	top: -30px;
+	left: -64px;
+	color: #fff;
+}
+
+#salud-section {
+	padding: 20px;
+	margin-left: 15px;
+	margin-right: 15ppx;
+	box-sizing: border-box;
+}
+
+.signo {
+	font-size: 40px;
+	font-weight: bold;
+	margin: 25px;
+}
+
+.label_etiqueta_salud {
+	display: block;
+	font-size: 20px;
+	text-align: center;
+}
+
+.item-user-section {
+	margin: 25px;
+}
+
+.label_valor_salud {
+	position: relative;
+	top: -20px;
+	left: 10px;
+}
+
+.icon-performace {
+	font-size: 52Px;
+	color: darkblue;
+}
+
+.form-signin {
+	max-width: 360px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 15px;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.card .card-content {
+	padding: 20px;
+	border-radius: 0 0 2px 2px;
+	height: 100px;
+}
+
+.progress-wrapper {
+	position: relative;
+	margin: 20px auto;
+	font-size: 30px;
+}
+
+.progress {
+	position: absolute;
+	color: #bbb;
+	font-weight: 100;
+	line-height: 1;
+}
+
+.progress {
+	overflow: visible;
+	height: 20px;
+	margin-bottom: 20px;
+	background-color: #FFFFFF;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.cash-color{
+	background-color: #95c11e !important;
+}
+
+.gold-color{
+	background-color:#f9b233 !important;
+}
+
+.text-gold-color{
+	color:#f9b233 !important;
+}
+
+.text-cash-color{
+	color: #95c11e !important;
+}
