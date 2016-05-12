@@ -1,0 +1,185 @@
+<div id="container-status">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="cont-info-usuario left">
+				<img src="template/img/avatar.png" class="left img-avatar" />
+				<ul class="info-user right">
+					<li>Nick: {{user.nick}}</li>
+					<li>Nombre y Apellido: {{user.getFullName()}}</li>
+					<li>Email: {{user.email}}</li>
+					<li>Departamento: {{user.departamento}}</li>
+					<li>Empresa Grupo: {{user.empresa_grupo}}</li>
+					<li>Ciudad: {{user.ciudad}}</li>
+				</ul>
+				<div class="limp"></div>
+			</div>
+		</div>
+		<div class="col-md-4 info-user-right">
+			<ul class="list-none right">
+				<li>
+					<label><i class="fa fa-heart {{user.saludObj.state}}-state"></i> Salud: <span>{{user.saludObj.value | number:1 }} %</span></label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+				<li>
+					<i class="fa fa-hard"></i>
+					<label>Patrimonio: $ <span>{{user.getPatrimonio()}}</span> Dips</label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+				<li>
+					<i class="fa fa-hard"></i>
+					<label>Logros: <span></span></label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+				<li>
+					<i class="fa fa-hard"></i>
+					<label>Progreso: <span></span></label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+
+				<li>
+					<i class="fa fa-hard"></i>
+					<label>Tiempo de juego: <span></span></label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row" id="salud-section">
+		<div class="col-md-8 col-md-offset-2" ng-cloak>
+
+			<h5>Salud: <span class="label_icon-heart {{user.saludObj.state}}-state">{{user.saludObj.state}}</span></h5>
+
+				<div class="col-sm-3">
+					<i class="fa fa-heart icon-heart {{user.saludObj.state}}-state "></i>
+				</div>
+				<div class="col-sm-9">
+					<rzslider rz-slider-model="sliderSalud.value" rz-slider-options="sliderSalud.options"></rzslider>
+				</div>
+
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<h5>Patrimonio</h5>
+			<h5>$ {{user.getPatrimonio()}} Dips</h5>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card ">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive"> 1 unid </h5>
+							<h6 class="h6-responsive">$ 10 Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6 class="text-center h6-responsive"> <i class="fa fa-building purple-text"></i> Propiedades</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive">${{user.cash}} Dips</h5>
+						</div>
+						<div class="card-action">
+							<h6 class="text-center h6-responsive"><i class="fa fa-money text-cash-color"></i> Cash</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive">{{user.unidades_oro}} unid</h5>
+							<h6 class="h6-responsive">$ {{configApp.dips_por_unidad_oro}} Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6 class="h6-responsive"><i class="fa fa-tasks text-gold-color"></i> Reservas Oro</h6>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-6">
+
+			<h5>Performance</h5>
+			<h5>{{user.getPerformance() | number:1}} %</h5>
+			<div class="col-md-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak flow-text" ng-style="getStyle()">{{ user.energia | number:1 }}%</div>
+					<div round-progress max="100" current="user.energia" color="#f9b233" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Energia</h6>
+			</div>
+			<div class="col-md-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak" ng-style="getStyle()">{{ user.compromiso | number:1 }}%</div>
+					<div round-progress max="100" current="user.compromiso" color="#00c0d9" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Compromiso</h6>
+			</div>
+			<div class="col-md-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak" ng-style="getStyle()">{{ user.conocimiento }}%</div>
+					<div round-progress max="100" current="user.conocimiento " color="#95c11e" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Conocimiento</h6>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Propiedades construidas/ Barrios</h5>
+			<div class="row">
+				<div class="col-md-6" id="barrio-charts">
+
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+					<div class="col-md-4">
+						<canvas id="" class="chart chart-doughnut" chart-click="onClick" chart-data="data_barrio" chart-labels="labels_barrio">
+						</canvas>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+
+					<div class="panel panel-default">
+						<div class="panel-heading cash-color">
+							<h5 class="text-center white-text"><i class="fa fa-money "></i> Cash</h5>
+						</div>
+						<div class="panel-body">
+							<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"> </canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading gold-color">
+							<h5 class="text-center white-text"><i class="fa fa-tasks"></i> Unidades de Oro</h5>
+						</div>
+						<div class="panel-body">
+							<canvas id="line" class="chart chart-line" chart-data="data_meses" chart-labels="labels_meses" chart-legend="true" chart-series="series_meses">
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
