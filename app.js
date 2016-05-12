@@ -4,7 +4,6 @@
 */
 (function () {
 	var miapp = angular.module("miapp");
-
 	miapp.run(
         function($rootScope, $templateCache, authService){
 			authService.isLogged();
