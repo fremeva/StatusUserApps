@@ -17,28 +17,28 @@
 		<div class="col-md-4 info-user-right">
 			<ul class="list-none right">
 				<li>
-					<label><i class="fa fa-heart"></i> Salud <span>{{user.getSalud() | number:1 }} %</span></label>
+					<label><i class="fa fa-heart {{user.saludObj.state}}-state"></i> Salud: <span>{{user.saludObj.value | number:1 }} %</span></label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Patrimonio: <span>{{user.getPatrimonio()}}</span></label>
+					<label>Patrimonio: $ <span>{{user.getPatrimonio()}}</span> Dips</label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Logros <span>70%</span></label>
+					<label>Logros: <span></span></label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Progreso <span>70%</span></label>
+					<label>Progreso: <span></span></label>
 					<div class="cont-slider">
 
 					</div>
@@ -46,7 +46,7 @@
 
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Tiempo de juego <span>70%</span></label>
+					<label>Tiempo de juego: <span></span></label>
 					<div class="cont-slider">
 
 					</div>

@@ -7,10 +7,12 @@
 			 var _idUser = $rootScope.idUserLoggedIn;
 
 			 userService.getInfoUser(_idUser).then(function (response) {
-					userFactory.setUserData(response.data);
-					$scope.user = userFactory;
-					$scope.user.saludObj = userFactory.getSalud();
-					$scope.paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
+				 console.log(response.data);
+				 userFactory.setUserData(response.data);
+				 $scope.user = userFactory;
+				 $scope.user.saludObj = userFactory.getSalud();
+				 $scope.paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
+				 console.log($rootScope.configApp);
 			 }, function (error) {
 					$location.path('/home');
 			 });
@@ -80,6 +82,8 @@
 			 $scope.showDonoutChar();
 			 $scope.showCashChar();
 			 $scope.showUnidOroChar();
+
+
 
 		 }])
 
