@@ -1,3 +1,7 @@
+/*
+* Config module File
+* Configuracion de la aplicacion. Rutas.
+*/
 (function () {
 	var miapp = angular.module('miapp');
 
@@ -10,26 +14,23 @@
 			$urlRouterProvider.otherwise('/login');
 			$stateProvider
 				.state('login', {
-							url: "/login"
-							, templateUrl: 'template/views/login.html'
-							, controller: 'loginController'
-						})
-						.state('home', {
+					url: "/login",
+					templateUrl: 'template/views/login.html',
+					controller: 'loginController'
+				})
+				.state('home', {
 							url: '/home'
 							, templateUrl: 'template/views/home.html'
 							, controller: 'homeController'
 						})
-						.state('status', {
-							url: '/status'
-							, templateUrl: 'template/views/status.html'
-							, controller: 'statusController'
-						})
-
+				.state('status', {
+					url: '/status',
+					templateUrl: 'template/views/status.html',
+					controller: 'statusController'
+				})
 	}])
 
 })();
-
-
 
 
 /*miapp.config(['$stateProvider', '$urlRouterProvider', '$rootScope', '$location',

@@ -1,18 +1,17 @@
-<div id="loginPage">
+<div class="row">
 	<form class="form-signin" name="mainLoginForm">
 		<div class="input-field">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="username" type="text" class="validate" ng-model="user.username" required autofocus>
-          <label for="icon_prefix" class="active">Usuario</label>
-        </div>
+			<i class="material-icons prefix">account_circle</i>
+			<input id="username" type="text" class="validate" ng-model="userAuth.username" required autofocus>
+			<label for="icon_prefix" class="active">Usuario</label>
+		</div>
 		<div class="input-field">
 			<i class="material-icons prefix">lock</i>
-          <input id="inputPassword" type="password" class="validate" ng-model="user.password" required>
-          <label for="icon_prefix">Contraseña</label>
-        </div>
+			<input id="inputPassword" type="password" class="validate" ng-model="userAuth.password" required>
+			<label for="icon_prefix">Contraseña</label>
+		</div>
 		<div class="card-btn text-center">
-			<a class="btn btn-info btn-md waves-effect waves-light " ng-disabled="mainLoginForm.$invalid" ng-click="login(user)">iniciar sesión</a>
+			<a class="btn btn-info btn-md waves-effect waves-light " ng-disabled="mainLoginForm.$invalid" ng-click="login(userAuth)">iniciar sesión</a>
 		</div>
 	</form>
 </div>
-

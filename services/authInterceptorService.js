@@ -1,7 +1,10 @@
+/*
+* Auth interceptor service File
+* Servicio para la autenticacion (Tomado del ejemplo enviado)
+*/
 (function () {
 
 	var servicesModel = angular.module('AppServices');
-
 	servicesModel.factory('authInterceptor', ['$rootScope', '$q', '$window'
 		, function ($rootScope, $q, $window) {
 			return {

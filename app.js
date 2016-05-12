@@ -1,3 +1,7 @@
+/*
+* App
+* Configuracion al arrancar la aplicacion.
+*/
 (function () {
 	var miapp = angular.module("miapp");
 
@@ -6,8 +10,6 @@
 			authService.isLogged();
             $rootScope.$on('$viewContentLoaded', function() {
                 $templateCache.removeAll();
-                //localStorage.clear();
-                //console.log('Cache Limpia')
             });
         }
     );
