@@ -1,21 +1,23 @@
+/*
+* Login controller File
+* Controlador para la autenticacion de la applicacion.
+*/
 (function(){
 
 	var controllerModule = angular.module('AppControllers');
 
 	controllerModule.controller('loginController', ['$scope', '$rootScope', '$window', '$location', 'authService',
 		function($scope, $rootScope, $window, $location, authService){
-			$scope.user = {};
-
-			$scope.login = function(user) {
-				authService.login(user).then( function successCallBack(response) {
+			$scope.userAuth = {};
+			$scope.login = function(userAuth) {
+				authService.login(userAuth).then( function (response) {
 					$window.localStorage.token = response.data.token;
 					authService.isLogged();
 					$location.path('/home');
 
-				}, function errorCallBack(response) {
+				}, function (response) {
 					delete $window.localStorage.token;
 					$scope.error = true;
-
 				});
 			};
 

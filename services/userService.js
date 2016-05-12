@@ -1,3 +1,7 @@
+/*
+* User Service
+* Servicio para obtener informacion de la Api relacionado al Usuario.
+*/
 (function(){
 
 	var servicesModule = angular.module('AppServices');
