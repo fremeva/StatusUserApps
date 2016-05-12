@@ -55,11 +55,19 @@
 			}
 			if (salud.value >= 51 && salud.value <= 75) {
 				salud.state = 'Optima';
+<<<<<<< HEAD
 				salud.color = '#ff5252';
 			}
 			if (salud.value >= 76) {
 				salud.state = 'Excelente';
 				salud.color = '#d32f2f';
+=======
+				salud.color = '#ff6d00';
+			}
+			if (salud.value >= 76) {
+				salud.state = 'Excelente';
+				salud.color = '#f44336';
+>>>>>>> origin/master
 			}
 
 			return salud;

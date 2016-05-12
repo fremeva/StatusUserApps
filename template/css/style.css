@@ -30,6 +30,15 @@
 	list-style: none;
 }
 
+<<<<<<< HEAD
+=======
+.list-none label{
+	color:#333;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+>>>>>>> origin/master
 .info-user {
 	margin-left: 5px;
 }
@@ -55,8 +64,25 @@
 	/*color: red;*/
 }
 
+<<<<<<< HEAD
 .Excelente-state {
 	color: #d32f2f;
+=======
+.Critica-state {
+	color: #757575;
+}
+
+.Regular-state {
+	color: #ffd600;
+}
+
+.Optima-state {
+	color: #ff6d00;
+}
+
+.Excelente-state {
+	color: #f44336;
+>>>>>>> origin/master
 }
 
 .label_icon-heart {
