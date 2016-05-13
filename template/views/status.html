@@ -59,12 +59,12 @@
 
 			<h5>Salud: <span class="label_icon-heart {{user.saludObj.state}}-state">{{user.saludObj.state}}</span></h5>
 
-				<div class="col-sm-3">
-					<i class="fa fa-heart icon-heart {{user.saludObj.state}}-state "></i>
-				</div>
-				<div class="col-sm-9">
-					<rzslider rz-slider-model="sliderSalud.value" rz-slider-options="sliderSalud.options"></rzslider>
-				</div>
+			<div class="col-sm-3">
+				<i class="fa fa-heart icon-heart {{user.saludObj.state}}-state "></i>
+			</div>
+			<div class="col-sm-9">
+				<rzslider rz-slider-model="sliderSalud.value" rz-slider-options="sliderSalud.options"></rzslider>
+			</div>
 
 		</div>
 
@@ -141,18 +141,10 @@
 			<h5>Propiedades construidas/ Barrios</h5>
 			<div class="row">
 				<div class="col-md-6" id="barrio-charts">
-
-					<div class="col-md-4">
+					<div class="col-md-4" ng-repeat="ciudad in user.ciudadSession">
 						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
 						</canvas>
-					</div>
-					<div class="col-md-4">
-						<canvas id="" class="chart chart-doughnut" chart-data="data_barrio" chart-labels="labels_barrio">
-						</canvas>
-					</div>
-					<div class="col-md-4">
-						<canvas id="" class="chart chart-doughnut" chart-click="onClick" chart-data="data_barrio" chart-labels="labels_barrio">
-						</canvas>
+						<h6 class="h6-responsive text-center">{{ciudad}}</h6>
 					</div>
 				</div>
 			</div>
@@ -164,7 +156,17 @@
 							<h5 class="text-center white-text"><i class="fa fa-money "></i> Cash</h5>
 						</div>
 						<div class="panel-body">
-							<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"> </canvas>
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show">
+								<h6>Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas id="bar" ng-show="canvas_cash_show"
+									class="chart chart-line"
+									chart-data="data_cash"
+									chart-labels="labels_cash"
+									chart-series="series_cash"
+									chart-colours="[ '#789a18', '#dd2c00']">
+							</canvas>
 						</div>
 					</div>
 				</div>
@@ -174,7 +176,17 @@
 							<h5 class="text-center white-text"><i class="fa fa-tasks"></i> Unidades de Oro</h5>
 						</div>
 						<div class="panel-body">
-							<canvas id="line" class="chart chart-line" chart-data="data_meses" chart-labels="labels_meses" chart-legend="true" chart-series="series_meses">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unid_oro_show">
+								<h6>Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unid_oro_show"
+									id="line"
+									class="chart chart-line"
+									chart-data="data_unid_oro"
+									chart-labels="labels_unid_oro"
+									chart-series="series_unid_oro"
+									chart-colours="[ '#789a18', '#dd2c00']">
 							</canvas>
 						</div>
 					</div>
@@ -183,3 +195,6 @@
 		</div>
 	</div>
 </div>
+
+<div>
+
