@@ -36,28 +36,28 @@
 
 		//Metodo que calcula y devuelve el performances del usuario
 		usuario.getPerformance = function () {
-			return (usuario.energia + usuario.compromiso + usuario.conocimiento);
+			return (usuario.energia + usuario.compromiso + usuario.conocimiento) /3;
 
 		}
 
 		//Metodo que calcula el valor de la salud, estado y el color y devuelve un objeto salud{};
 		usuario.getSalud = function () {
 			var salud = {}
-			salud.value = (this.getPerformance() / 3);
+			salud.value = (this.getPerformance() /*/3*/);
 
-			if (salud.value >= 0 && salud.value <= 25) {
+			if (salud.value >= 0 && salud.value < $rootScope.configApp.porcentaje_salud_regular) {
 				salud.state = 'Critica';
 				salud.color = '#757575';
 			}
-			if (salud.value >= 26 && salud.value <= 50) {
+			if (salud.value >= $rootScope.configApp.porcentaje_salud_regular && salud.value < $rootScope.configApp.porcentaje_salud_optima) {
 				salud.state = 'Regular';
 				salud.color = '#ffd600';
 			}
-			if (salud.value >= 51 && salud.value <= 75) {
+			if (salud.value >= $rootScope.configApp.porcentaje_salud_optima && salud.value < $rootScope.configApp.porcentaje_salud_excelente) {
 				salud.state = 'Optima';
 				salud.color = '#ff6d00';
 			}
-			if (salud.value >= 76) {
+			if (salud.value >= $rootScope.configApp.porcentaje_salud_excelente) {
 				salud.state = 'Excelente';
 				salud.color = '#f44336';
 			}

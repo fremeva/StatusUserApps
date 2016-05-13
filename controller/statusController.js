@@ -1,90 +1,102 @@
 (function () {
 
 	var controllerModule = angular.module('AppControllers');
-	controllerModule.controller('statusController', ['$scope', '$rootScope', '$location', 'userService', 'userFactory',
-		 function ($scope, $rootScope, $location, userService, userFactory) {
-			 // Id del usuario Autenticado.
-			 var _idUser = $rootScope.idUserLoggedIn;
 
-			 userService.getInfoUser(_idUser).then(function (response) {
-				 console.log(response.data);
-				 userFactory.setUserData(response.data);
-				 $scope.user = userFactory;
-				 $scope.user.saludObj = userFactory.getSalud();
-				 $scope.paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
-				 console.log($rootScope.configApp);
-			 }, function (error) {
-					$location.path('/home');
-			 });
+	controllerModule.controller('statusController', [
+		'$scope', '$rootScope', '$location', 'userService', 'userFactory', 'balanceChartFactory',
+		function ($scope, $rootScope, $location, userService, userFactory, balanceChartFactory) {
+			// Id del usuario Autenticado.
+			var _idUser = $rootScope.idUserLoggedIn;
 
-			 userService.getBalance(_idUser).then(function (response) {
-				 $scope.balance = response.data;
-				 console.log($scope.balance);
-			 }, function (error) {
-				 $location.path('/home');
-			 });
+			//Obtener la informacion del usuario.
+			userService.getInfoUser(_idUser).then(function (response) {
+				userFactory.setUserData(response.data);
+				$scope.user = userFactory;
+				$scope.user.saludObj = userFactory.getSalud();
 
-			 /************** Charts Functions ********************/
-			 $scope.showDonoutChar = function () {
-				 $scope.labels_barrio = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-				 $scope.data_barrio = [300, 500, 100];
-				 $scope.onClick = function (points, evt) {
-					 console.log(points, evt);
-				 };
-			 }
+				paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
 
-			 $scope.showCashChar = function () {
-				 $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-				 $scope.series = ['Series A', 'Series B'];
-				 $scope.data = [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]];
-			 }
+				//Show Donout Charts
+				showDonoutChar();
 
-			 $scope.showUnidOroChar = function () {
-				 $scope.labels_meses = ["January", "February", "March", "April", "May", "June", "July"];
-				 $scope.series_meses = ['Series A', 'Series B'];
-				 $scope.data_meses = [[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]];
-			 }
+			}, function (error) {
 
-			 $scope.getStyle = function () {
-				 var transform = ($scope.isSemi ? '' : 'translateY(50%) ') + 'translateX(-50%)';
-				 return {
-					 'top': $scope.isSemi ? 'auto' : '50%',
-					 'bottom': $scope.isSemi ? '5%' : 'auto',
-					 'left': '50%',
-					 'transform': transform,
-					 '-moz-transform': transform,
-					 '-webkit-transform': transform,
-					 'font-size': $scope.radius / 3.5 + 'px'
-					};
-			 };
+				$location.path('/home');
+			});
 
-			 $scope.paintSliderChart = function (salud) {
-				 var saludInt = parseInt(salud.value);
-				 $scope.sliderSalud = {
-					 value: saludInt,
-					 options: {
-						 floor: 0
-						 , ceil: 100
-						 , readOnly: true
-						 , showTicksValues: 25
-						 , showSelectionBar: true
-						 , getSelectionBarColor: function () {
-							 return salud.color
-						 }
-						 , getPointerColor: function () {
-							 return salud.color
-							}
-					 }
-				 };
-			 }
-
-			 //Show Charts
-			 $scope.showDonoutChar();
-			 $scope.showCashChar();
-			 $scope.showUnidOroChar();
+			//Obtener el balance del usuario.
+			userService.getBalance(_idUser).then(function (response) {
+				balanceChartFactory.runProcess(response.data);
+				paintChartCash(balanceChartFactory);
+				paintChartUnidadOro(balanceChartFactory);
+			}, function (error) {
+				$location.path('/home');
+			});
 
 
+			$scope.getStyle = function () {
+				var transform = ($scope.isSemi ? '' : 'translateY(50%) ') + 'translateX(-50%)';
+				return {
+					'top': $scope.isSemi ? 'auto' : '50%'
+					, 'bottom': $scope.isSemi ? '5%' : 'auto'
+					, 'left': '50%'
+					, 'transform': transform
+					, '-moz-transform': transform
+					, '-webkit-transform': transform
+					, 'font-size': $scope.radius / 3.5 + 'px'
+				};
+			};
+
+			/************** Charts Functions ********************/
+			var showDonoutChar = function () {
+				$scope.labels_barrio = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+				$scope.data_barrio = [300, 500, 100];
+				$scope.onClick = function (points, evt) {
+					//console.log(points, evt);
+				};
+			}
+
+			var paintSliderChart = function (salud) {
+				var saludInt = parseInt(salud.value);
+				$scope.sliderSalud = {
+					value: saludInt
+					, options: {
+						floor: 0
+						, ceil: 100
+						, readOnly: true
+						, showTicksValues: 25
+						, showSelectionBar: true
+						, getSelectionBarColor: function () {
+							return salud.color
+						}
+						, getPointerColor: function () {
+							return salud.color
+						}
+					}
+				};
+			}
+
+			var paintChartCash = function (balance) {
+				$scope.labels_cash = balance.getLabelsCash();
+				$scope.series_cash = balance.getSeriesCash();
+				$scope.data_cash = balance.getDataCash();
+				$scope.canvas_cash_show = $scope.labels_cash.length != 0 ? true : false;
+			}
+
+			var paintChartUnidadOro = function (balance) {
+				$scope.labels_unid_oro = balance.getLabelsUnidadOro();
+				$scope.series_unid_oro = balance.getSeriesUnidadOro();
+				$scope.data_unid_oro = balance.getDataUnidadOro();
+				$scope.canvas_unid_oro_show = scope.labels_unid_oro.length != 0 ? true : false;
+			}
+
+			$scope.alerts = [
+    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+  ];
 
 		 }])
+
+
 
 })();
