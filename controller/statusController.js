@@ -13,14 +13,12 @@
 				userFactory.setUserData(response.data);
 				$scope.user = userFactory;
 				$scope.user.saludObj = userFactory.getSalud();
-
 				paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
 
 				//Show Donout Charts
 				showDonoutChar();
 
 			}, function (error) {
-
 				$location.path('/home');
 			});
 
@@ -32,6 +30,13 @@
 			}, function (error) {
 				$location.path('/home');
 			});
+
+			/*userService.getCiudadUsuario(_idUser).then(function(response){
+				console.log(response.data);
+
+			}, function(error){
+
+			});*/
 
 
 			$scope.getStyle = function () {
@@ -87,13 +92,8 @@
 				$scope.labels_unid_oro = balance.getLabelsUnidadOro();
 				$scope.series_unid_oro = balance.getSeriesUnidadOro();
 				$scope.data_unid_oro = balance.getDataUnidadOro();
-				$scope.canvas_unid_oro_show = scope.labels_unid_oro.length != 0 ? true : false;
+				$scope.canvas_unid_oro_show = $scope.labels_unid_oro.length != 0 ? true : false;
 			}
-
-			$scope.alerts = [
-    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-  ];
 
 		 }])
 
