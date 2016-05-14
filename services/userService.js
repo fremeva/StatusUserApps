@@ -17,6 +17,9 @@
 			},
 			getSessionUsuario: function (usuario_id) {
 				return $http.get(this._urlhttp + 'usuarios/' + usuario_id + '/sesion/');
+			},
+			getCiudadUsuario: function (usuario_id) {
+				return $http.get(this._urlhttp + 'ciudades/' + usuario_id);
 			}
 		}
 	}

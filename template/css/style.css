@@ -197,3 +197,8 @@
 .text-cash-color {
 	color: #95c11e !important;
 }
+
+.material-icons-customer-font {
+	font-size: inherit !important;
+	font-weight: bold;
+}

@@ -24,21 +24,24 @@
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Patrimonio: $ <span>{{user.getPatrimonio()}}</span> Dips</label>
+					<label>
+						<i class="fa fa-tasks text-gold-color"></i>
+						Patrimonio: $<span>{{user.getPatrimonio()}}</span> Dips
+					</label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Logros: <span></span></label>
+					<label><i class="fa fa-paper-plane"></i> Logros: <span></span></label>
 					<div class="cont-slider">
 
 					</div>
 				</li>
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Progreso: <span></span></label>
+					<label><i class="fa fa-signal"></i> Progreso: <span></span></label>
 					<div class="cont-slider">
 
 					</div>
@@ -46,7 +49,7 @@
 
 				<li>
 					<i class="fa fa-hard"></i>
-					<label>Tiempo de juego: <span></span></label>
+					<label><i class="material-icons material-icons-customer-font">timer</i>Tiempo de juego: <span></span></label>
 					<div class="cont-slider">
 
 					</div>
@@ -157,7 +160,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show">
-								<h6>Informacion:</h6>
+								<h6> <i class="fa fa-info-circle" aria-hidden="true"></i>Informacion:</h6>
 								Aqui estaría la información que no se encontraron datos para graficar
 							</div>
 							<canvas id="bar" ng-show="canvas_cash_show"
@@ -177,7 +180,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_unid_oro_show">
-								<h6>Informacion:</h6>
+								<h6><i class="fa fa-info-circle" aria-hidden="true"></i> Informacion:</h6>
 								Aqui estaría la información que no se encontraron datos para graficar
 							</div>
 							<canvas ng-show="canvas_unid_oro_show"
