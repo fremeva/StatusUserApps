@@ -66,9 +66,8 @@
 		}
 
 		//Metodo que calcula y devuelve el patrimonio del usuario.
-		usuario.getPatrimonio = function () {
-			var sumatoriaVivienda = 10 //ESTO ES DE PRUEBA
-			return (sumatoriaVivienda + usuario.cash + (usuario.unidades_oro * $rootScope.configApp.dips_por_unidad_oro));
+		usuario.getPatrimonio = function (sumatoriaPrecioVivienda) {
+			return (sumatoriaPrecioVivienda + usuario.cash + (usuario.unidades_oro * $rootScope.configApp.dips_por_unidad_oro));
 		}
 
 		return usuario; //retorna el objeto Usuario{};
