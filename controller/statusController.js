@@ -2,11 +2,28 @@
 
 	var controllerModule = angular.module('AppControllers');
 
-	controllerModule.controller('statusController', [
-		'$scope', '$rootScope', '$location', 'userService', 'userFactory', 'balanceChartFactory',
-		function ($scope, $rootScope, $location, userService, userFactory, balanceChartFactory) {
+	controllerModule.controller('statusController', ['$scope','$rootScope', '$location', 'userService', 'userFactory',
+													 'balanceChartFactory', 'patrimonioUserFactory',
+		function ($scope, $rootScope, $location, userService, userFactory, balanceChartFactory,patrimonioUserFactory
+		) {
 			// Id del usuario Autenticado.
 			var _idUser = $rootScope.idUserLoggedIn;
+
+			//Obtener el patrimonio del usuario.
+			userService.getEdificioUsuario(_idUser).then(function (response){
+				//edificiosUserFactory.setEdificioData(response.data);
+				var edificios = response.data;
+				userService.getPatrimonioEdificio(_idUser).then(function (response){
+					patrimonioUserFactory.setPatrimonioData(response.data, edificios);
+					$scope.patrimonioUser = patrimonioUserFactory;
+					console.log($scope.patrimonioUser);
+					paintDoughnutToBarrioFlexibilidad($scope.patrimonioUser.flexibilidad);
+					paintDoughnutToBarrioColaboracion($scope.patrimonioUser.colaboracion);
+					paintDoughnutToBarrioInnovacion($scope.patrimonioUser.innovacion);
+				});
+			}, function (error){
+				$location.path('/home');
+			});
 
 			//Obtener la informacion del usuario.
 			userService.getInfoUser(_idUser).then(function (response) {
@@ -14,10 +31,6 @@
 				$scope.user = userFactory;
 				$scope.user.saludObj = userFactory.getSalud();
 				paintSliderChart($scope.user.saludObj); //Pintar Slider de la salud del usuario.
-
-				//Show Donout Charts
-				showDonoutChar();
-
 			}, function (error) {
 				$location.path('/home');
 			});
@@ -30,14 +43,6 @@
 			}, function (error) {
 				$location.path('/home');
 			});
-
-			/*userService.getCiudadUsuario(_idUser).then(function(response){
-				console.log(response.data);
-
-			}, function(error){
-
-			});*/
-
 
 			$scope.getStyle = function () {
 				var transform = ($scope.isSemi ? '' : 'translateY(50%) ') + 'translateX(-50%)';
@@ -94,6 +99,117 @@
 				$scope.data_unid_oro = balance.getDataUnidadOro();
 				$scope.canvas_unid_oro_show = $scope.labels_unid_oro.length != 0 ? true : false;
 			}
+
+			var paintDoughnutToBarrioFlexibilidad = function (barrioObject){
+
+				$scope.labels_flexibilidad = [];
+				$scope.data_flexibilidad = [];
+
+				if(barrioObject.edificios ==0){
+					$scope.labels_flexibilidad.push("Ed. No construido");
+					$scope.data_flexibilidad.push(100);
+				}
+				else{
+					var num_porcent_barrio = 100/parseInt(barrioObject.propiedades_maximo);
+					if(barrioObject.propiedades_construidas != 0 &&
+					   barrioObject.propiedades_construidas < barrioObject.propiedades_maximo)
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+								$scope.labels_flexibilidad.push(item.info);
+								$scope.data_flexibilidad.push(num_porcent_barrio);
+						});
+						var dif = barrioObject.propiedades_maximo - barrioObject.propiedades_construidas;
+						for(var i=0;i<dif;i++){
+							$scope.labels_flexibilidad.push("Ed. No construido");
+							$scope.data_flexibilidad.push(num_porcent_barrio);
+						}
+
+					}
+					else
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+							$scope.labels_flexibilidad.push(item.info);
+							$scope.data_flexibilidad.push(item.precio);
+						});
+					}
+				}
+
+			}
+
+			var paintDoughnutToBarrioColaboracion = function (barrioObject){
+
+				$scope.labels_Colaboracion = []
+				$scope.data_Colaboracion = []
+
+				if(barrioObject.edificios ==0){
+					$scope.labels_Colaboracion.push("Ed. No construido");
+					$scope.data_Colaboracion.push(100);
+				}
+				else{
+					var num_porcent_barrio = 100/parseInt(barrioObject.propiedades_maximo);
+					if(barrioObject.propiedades_construidas != 0 &&
+					   barrioObject.propiedades_construidas < barrioObject.propiedades_maximo)
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+								$scope.labels_Colaboracion.push(item.info);
+								$scope.data_Colaboracion.push(num_porcent_barrio);
+						});
+						var dif = barrioObject.propiedades_maximo - barrioObject.propiedades_construidas;
+						for(var i=0;i<dif;i++){
+							$scope.labels_Colaboracion.push("Ed. No construido");
+							$scope.data_Colaboracion.push(num_porcent_barrio);
+						}
+
+					}
+					else
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+							$scope.labels_Colaboracion.push(item.info);
+							$scope.data_Colaboracion.push(item.precio);
+						});
+					}
+				}
+
+			}
+
+			var paintDoughnutToBarrioInnovacion = function (barrioObject){
+
+				$scope.labels_Innovacion = []
+				$scope.data_Innovacion = []
+
+				if(barrioObject.edificios ==0){
+					$scope.labels_Innovacion.push("Ed. No construido");
+					$scope.data_Innovacion.push(100);
+				}
+				else{
+					var num_porcent_barrio = 100/parseInt(barrioObject.propiedades_maximo);
+					if(barrioObject.propiedades_construidas != 0 &&
+					   barrioObject.propiedades_construidas < barrioObject.propiedades_maximo)
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+								$scope.labels_Innovacion.push(item.info);
+								$scope.data_Innovacion.push(num_porcent_barrio);
+						});
+						var dif = barrioObject.propiedades_maximo - barrioObject.propiedades_construidas;
+						for(var i=0;i<dif;i++){
+							$scope.labels_Innovacion.push("Ed. No construido");
+							$scope.data_Innovacion.push(num_porcent_barrio);
+						}
+
+					}
+					else
+					{
+						barrioObject.edificios.forEach(function (item, index) {
+							$scope.labels_Innovacion.push(item.info);
+							$scope.data_Innovacion.push(item.precio);
+						});
+					}
+				}
+
+			}
+
+
+			//$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"]; $scope.data = [35, 15, 50];
 
 		 }])
 
