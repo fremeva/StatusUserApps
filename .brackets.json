@@ -1,5 +1,8 @@
 {
     "jscodehints.detectedExclusions": [
-        "F:/Software Engineering - Developer/Projects/PROJECTUS SAS/StatusUserApps/services/userService.js"
+        "F:/Software Engineering - Developer/Projects/PROJECTUS SAS/StatusUserApps/services/userService.js",
+        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/moduleRegistration.js",
+        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/controller/statusController.js",
+        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/config.js"
     ]
 }
