@@ -36,9 +36,11 @@
 		patrimonio.convertToDoughnutChartDataFormat = function(barrio) {
 			var labels = [];
 			var datas = [];
+			var porcent_construido = 0;
 			if (barrio.edificios == 0) {
 				labels.push("NO-CONSTRUIDO");
 				datas.push(100);
+				porcent_construido=0;
 			} else {
 				var num_porcent_barrio = 100 / parseInt(barrio.propiedades_maximo);
 				if (barrio.propiedades_construidas != 0 &&
@@ -47,7 +49,8 @@
 						labels.push(item.etiqueta);
 						datas.push(num_porcent_barrio);
 					});
-					var numporc_noconstruido = num_porcent_barrio * barrio.propiedades_construidas;
+					porcent_construido = num_porcent_barrio * barrio.propiedades_construidas;
+					var numporc_noconstruido = 100 - porcent_construido;
 					labels.push("NO-CONSTRUIDO");
 					datas.push(numporc_noconstruido);
 					/*var dif = barrioObject.propiedades_maximo - barrioObject.propiedades_construidas;
@@ -58,14 +61,17 @@
 
 				} else {
 					barrio.edificios.forEach(function (item, index) {
-						labels.push(item.info);
-						datas.push(item.precio);
+						labels.push(item.etiqueta);
+						datas.push(num_porcent_barrio);
 					});
+					porcent_construido=100;
 				}
 			}
+			console.log(porcent_construido);
 			return  {
 				label: labels,
-				data: datas
+				data: datas,
+				porcent: porcent_construido
 			};
 		}
 
