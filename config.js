@@ -9,15 +9,16 @@
 		, function ($stateProvider, $urlRouterProvider, $httpProvider,ChartJsProvider) {
 
 			// Configure all charts
-			ChartJsProvider.setOptions({
+			ChartJsProvider.setOptions('Line',{
 				colours: ['#97BBCD', '#DCDCDC', '#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']
 				, responsive: true,
-				legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span ="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=datasets[i].strokeColor%>">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><span class="<%=name.toLowerCase()%>-legend-text"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>'
+				legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span ="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=datasets[i].strokeColor%>">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><span class="<%=name.toLowerCase()%>-legend-text">&nbsp<%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>'
 
 			});
 			// Configure all doughnut charts
 			ChartJsProvider.setOptions('Doughnut', {
-				animateScale: true
+				animateScale: true,
+				tooltipTemplate: "<%= label %>: <%= value %>%"
 			});
 
 			$httpProvider.interceptors.push('authInterceptor');
@@ -37,7 +38,7 @@
 				})
 				.state('status', {
 					url: '/status'
-					, templateUrl: 'template/views/status.html'
+					, templateUrl: 'template/views/status/status.html'
 					, controller: 'statusController'
 				})
 	}])
