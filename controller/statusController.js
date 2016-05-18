@@ -14,7 +14,6 @@
 				userService.getPatrimonioEdificio(_idUser).then(function (response) {
 					patrimonioUserFactory.setPatrimonioData(response.data, edificios);
 					$scope.patrimonioUser = patrimonioUserFactory;
-					console.log($scope.patrimonioUser);
 					var dataChart =
 						$scope.patrimonioUser.convertToDoughnutChartDataFormat($scope.patrimonioUser.flexibilidad);
 					showDonutCharFlexibilidad(dataChart); //Llamada a la funcion para pintar los Donou

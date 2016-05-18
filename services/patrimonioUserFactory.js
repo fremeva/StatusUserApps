@@ -67,7 +67,6 @@
 					porcent_construido=100;
 				}
 			}
-			console.log(porcent_construido);
 			return  {
 				label: labels,
 				data: datas,
