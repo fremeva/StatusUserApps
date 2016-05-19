@@ -203,3 +203,96 @@
 	font-weight: bold;
 }
 
+
+.medalla-img {
+	display: block;
+	width: 120px;
+	padding: 5px;
+	margin-left: auto;
+    margin-right: auto;
+	box-sizing: border-box;
+
+}
+
+.label-medalla {
+	color: #333;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+	display: block;
+}
+
+.insignia-image {
+	width: 52px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.insignia-label {
+	color: rgba(31,113,179,.95) !important;
+    font-size: 12px;
+	text-align: center;
+	font-weight: normal;
+	display: block;
+}
+
+
+.vc {
+	background-color: #cad639!important;
+}
+
+.vn {
+    background-color: #66ac3d!important;
+}
+
+.ac {
+    background-color: #35aee1!important;
+}
+
+.ma {
+    background-color: #d72a6b!important;
+}
+
+.ao {
+    background-color: #1f71b3!important;
+}
+
+.producto-services {
+	display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.producto-services div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1em;
+    background-color: initial!important;
+}
+
+.producto-services i {
+    font-size: 1.3em;
+    width: 2em;
+    border-radius: 1em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto-services h5 {
+    color: rgba(31,113,179,.95);
+	font-size: 12px;
+
+}
+
+.titulo-producto {
+	color: #E94E1a;
+	font-size: 19px;
+}

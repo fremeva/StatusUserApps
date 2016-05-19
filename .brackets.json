@@ -3,6 +3,7 @@
         "F:/Software Engineering - Developer/Projects/PROJECTUS SAS/StatusUserApps/services/userService.js",
         "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/moduleRegistration.js",
         "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/controller/statusController.js",
-        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/config.js"
+        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/config.js",
+        "F:/Software-Developer/Projects/PROJECTUS SAS/StatusUserApps/libs/ui-bootstrap-tpls-0.14.0.min.js"
     ]
 }
