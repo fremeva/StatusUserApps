@@ -5,9 +5,16 @@
 (function () {
 
 	var controllerModule = angular.module('AppControllers');
-	controllerModule.controller('homeController', ['$scope'
-    , function ($scope) {
+	controllerModule.controller('homeController', ['$scope', 'userService', '$rootScope'
+    , function ($scope, userService, $rootScope) {
 		// Funcion para controlar el template home.html
+		// Id del usuario Autenticado.
+			var _idUser = $rootScope.idUserLoggedIn;
+		userService.getBalance(_idUser).then(function (response) {
+				$scope.balance = response.data;
+			}, function (error) {
+				$location.path('/home');
+			});
 
     }]);
 

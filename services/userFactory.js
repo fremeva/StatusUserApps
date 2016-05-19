@@ -70,7 +70,19 @@
 			return (sumatoriaPrecioVivienda + usuario.cash + (usuario.unidades_oro * $rootScope.configApp.dips_por_unidad_oro));
 		}
 
-		return usuario; //retorna el objeto Usuario{};
+		usuario.getColorEnergia = function(){
+			return usuario.energia <=25 ? '#f44336' : '#f9b233';
+		}
+
+		usuario.getColorCompromiso = function(){
+			return usuario.compromiso <=25 ? '#f44336' : '#00c0d9';
+		}
+
+		usuario.getColorConocimiento = function(){
+			return usuario.conocimiento <=25 ? '#f44336' : '#95c11e';
+		}
+
+		return usuario; //retorna el objeto usuario{};
 
 	}])
 
