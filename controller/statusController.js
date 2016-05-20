@@ -158,10 +158,9 @@
 				$scope.canvas_cash_show_mes = true;
 			}
 			$scope.paintChartCashPorHora = function(fecha){
-				//var fecha = $scope.selectedFechaToCash;
 				var dataToChart = balanceChartFactory.getDataPorHoras("cash", fecha);
 				$scope.labels_cash_horas = dataToChart.labels;
-				$scope.series_cash_horas = dataToChart.getSeries;
+				$scope.series_cash_horas = balanceChartFactory.getSeries();
 				$scope.data_cash_horas = [dataToChart.ingresos, dataToChart.gastos]
 				$scope.showChartCashHora = true;
 			}
@@ -189,7 +188,7 @@
 				//var fecha = $scope.selectedFechaToCash;
 				var dataToChart = balanceChartFactory.getDataPorHoras("unidad_oro", fecha);
 				$scope.labels_unidades_oros_horas = dataToChart.labels;
-				$scope.series_unidades_oros_horas = dataToChart.getSeries;
+				$scope.series_unidades_oros_horas = balanceChartFactory.getSeries();
 				$scope.data_unidades_oros_horas = [dataToChart.ingresos, dataToChart.gastos]
 				$scope.showChartUnidadOroHora = true;
 			}

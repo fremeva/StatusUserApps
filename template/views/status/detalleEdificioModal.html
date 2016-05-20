@@ -1,13 +1,18 @@
+<div class="modal-header">
+	<!--<button type="button" class="close" data-dismiss="modal" aria-label="close">
+		<span aria-hidden="true">x</span>
+	</button>-->
+	<h4 class="modal-title">Información sobre este edificio:</h4>
+	<label>Barrio: {{barrio}}</label>
+</div>
 <div class="modal-body">
-	<h6>Barrio: {{barrio}}</h6>
 	<div ng-if="!edificio.isConstruido">
 		<p>{{edificio.info}}</p>
 	</div>
 	<div ng-if="edificio.isConstruido">
 		<h6>{{edificio.etiqueta}}</h6>
+		<img ng-src="http://pruebas.area-innova.com:8888/template/css/assets/{{edificio.imagen}}" />
 		<dl class="dl-horizontal">
-			<dt>Imagen</dt>
-			<dd>{{edificio.imagen}}</dd>
 			<dt>Informacion</dt>
 			<dd>{{edificio.info}}</dd>
 			<dt>Precio</dt>
@@ -16,16 +21,15 @@
 		<h6>Mejoras</h6>
 		<ul>
 			<li ng-repeat="mejora in edificio.mejoras">
+				<img ng-src="http://pruebas.area-innova.com:8888/template/css/assets/{{mejora.imagen}}" />
 				<dl class="dl-horizontal">
-					<dt>Imagen</dt>
-					<dd>{{mejora.imagen}}</dd>
 					<dt>Informacion</dt>
 					<dd>{{mejora.info}}</dd>
 					<dt>Precio</dt>
 					<dd>$ {{mejora.precio}}</dd>
 				</dl>
 			</li>
-		</ol>
+			</ol>
 	</div>
 
 </div>
