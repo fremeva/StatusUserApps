@@ -162,47 +162,131 @@
 				<div class="col-md-6">
 					<h4 class="text-center text-cash-color"><i class="fa fa-money "></i> Cash</h4>
 					<uib-tabset type="pills">
-						<uib-tab heading="Horas" classes="btn-sm">
-							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show">
+						<uib-tab heading="Meses" classes="btn-sm">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
 								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
 								Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_cash_show"
+							<canvas ng-show="canvas_cash_show_mes"
 									class="chart chart-line"
-									chart-data="data_cash"
-									chart-labels="labels_cash"
+									chart-data="data_cash_mes"
+									chart-labels="labels_cash_mes"
 									chart-legend="true"
-									chart-series="series_cash"
+									chart-series="series_cash_mes"
 									chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
-						<uib-tab heading="Semanas" classes="btn-sm">
-							content
+						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartCashPorSemana()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_cash_show_semana"
+									class="chart chart-line"
+									chart-data="data_cash_semana"
+									chart-labels="labels_cash_semana"
+									chart-legend="true"
+									chart-series="series_cash_semana"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
 						</uib-tab>
-						<uib-tab heading="Meses" classes="btn-sm">
-							content
+						<uib-tab heading="Dias" classes="btn-sm" select="paintChartCashPorDia()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_dia">
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_cash_show_dia"
+									class="chart chart-line"
+									chart-data="data_cash_dia"
+									chart-labels="labels_cash_dia"
+									chart-legend="true"
+									chart-series="series_cash_dia"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Horas por Dias" classes="btn-sm">
+							<div class="form-group form-inline">
+								<label>Seleccionar fecha</label>
+								<select class="form-control"
+										ng-model="selectedFechaToCash"
+										ng-change="paintChartCashPorHora(selectedFechaToCash)"
+										ng-options="x for x in dayArray">>
+							  </select>
+							</div>
+							<canvas ng-show="showChartCashHora"
+									class="chart chart-line"
+									chart-data="data_cash_horas"
+									chart-legend="true"
+									chart-labels="labels_cash_horas"
+									chart-series="series_cash_horas"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
 						</uib-tab>
 					</uib-tabset>
 				</div>
 				<div class="col-md-6">
 					<h4 class="text-center text-gold-color"><i class="fa fa-tasks"></i> Unidades de Oro</h4>
 					<uib-tabset type="pills">
-						<uib-tab heading="Horas" classes="btn-sm">
-							<div class="alert alert-info" role="alert" ng-hide="canvas_unid_oro_show">
+						<uib-tab heading="Mensual" classes="btn-sm">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_mes">
 								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
 								Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_unid_oro_show"
+							<canvas ng-show="canvas_unidades_oros_show_mes"
 									class="chart chart-line"
-									chart-data="data_unid_oro"
+									chart-data="data_unidades_oros_mes"
 									chart-legend="true"
-									chart-labels="labels_unid_oro"
-									chart-series="series_unid_oro"
+									chart-labels="labels_unidades_oros_mes"
+									chart-series="series_unidades_oros_mes"
 									chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
-						<uib-tab heading="Semanas" classes="btn-sm"></uib-tab>
-						<uib-tab heading="Meses" classes="btn-sm"></uib-tab>
+						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartUnidadOroPorSemana()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_semana">
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unidades_oros_show_semana"
+									class="chart chart-line"
+									chart-data="data_unidades_oros_semana"
+									chart-legend="true"
+									chart-labels="labels_unidades_oros_semana"
+									chart-series="series_unidades_oros_semana"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Dias" classes="btn-sm" select="paintChartUnidadOroPorDia()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_dia">
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
+								Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unidades_oros_show_dia"
+									class="chart chart-line"
+									chart-data="data_unidades_oros_dia"
+									chart-legend="true"
+									chart-labels="labels_unidades_oros_dia"
+									chart-series="series_unidades_oros_dia"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Horas por Dias" classes="btn-sm">
+							<div class="form-group form-inline">
+								<label>Seleccionar fecha:</label>
+								<select class="form-control"
+										ng-model="selectedFechaToUnidadOro"
+										ng-change="paintChartUnidadOroPorHora(selectedFechaToUnidadOro)"
+										ng-options="x for x in dayArray">>
+							  </select>
+							</div>
+							<canvas ng-show="showChartUnidadOroHora"
+									class="chart chart-line"
+									chart-data="data_unidades_oros_horas"
+									chart-legend="true"
+									chart-labels="labels_unidades_oros_horas"
+									chart-series="series_unidades_oros_horas"
+									chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
 					</uib-tabset>
 
 				</div>
