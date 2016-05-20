@@ -44,8 +44,8 @@
 			//Obtener el balance del usuario.
 			userService.getBalance(_idUser).then(function (response) {
 				balanceChartFactory.runProcess(response.data);
-				paintChartCash(balanceChartFactory);
-				paintChartUnidadOro(balanceChartFactory);
+				$scope.paintChartCashPorMes(balanceChartFactory);
+				$scope.paintChartUnidadOroPorMes(balanceChartFactory);
 			}, function (error) {
 				$location.path('/home');
 			});
@@ -62,7 +62,6 @@
 					, 'font-size': $scope.radius / 3.5 + 'px'
 				};
 			};
-
 			/************** Charts Functions ********************/
 			var paintSliderChart = function (salud) {
 				var saludInt = parseInt(salud.value);
@@ -110,7 +109,6 @@
 					showModalEvent(points, barrio.nombre_barrio, barrio.edificios);
 				};
 			}
-
 			var showModalEvent = function (points, nombreBarrio, edificios) {
 				var edificioSelected = {}; //Edificio seleccionado
 				edificioSelected.isConstruido = false;
@@ -139,22 +137,67 @@
 				});
 
 			}
-			var paintChartCash = function (balance) {
-				$scope.labels_cash = balance.getLabelsCash();
-				$scope.series_cash = balance.getSeriesCash();
-				$scope.data_cash = balance.getDataCash();
-				$scope.canvas_cash_show = $scope.labels_cash.length != 0 ? true : false;
+
+			$scope.dayArray = balanceChartFactory.getLabelsPorDia();
+			$scope.paintChartCashPorDia = function () {
+				$scope.labels_cash_dia = balanceChartFactory.getLabelsPorDia();
+				$scope.series_cash_dia = balanceChartFactory.getSeries();
+				$scope.data_cash_dia = balanceChartFactory.getDataPorDia("cash");
+				$scope.canvas_cash_show_dia = true;
 			}
-			var paintChartUnidadOro = function (balance) {
-				$scope.labels_unid_oro = balance.getLabelsUnidadOro();
-				$scope.series_unid_oro = balance.getSeriesUnidadOro();
-				$scope.data_unid_oro = balance.getDataUnidadOro();
-				$scope.canvas_unid_oro_show = $scope.labels_unid_oro.length != 0 ? true : false;
+			$scope.paintChartCashPorSemana = function () {
+				$scope.labels_cash_semana = balanceChartFactory.getLabelsPorSemana();
+				$scope.series_cash_semana = balanceChartFactory.getSeries();
+				$scope.data_cash_semana = balanceChartFactory.getDataPorSemana("cash");
+				$scope.canvas_cash_show_semana = true;
 			}
+			$scope.paintChartCashPorMes = function (balance) {
+				$scope.labels_cash_mes = balanceChartFactory.getLabelsPorMes();
+				$scope.series_cash_mes = balanceChartFactory.getSeries();
+				$scope.data_cash_mes = balanceChartFactory.getDataPorMes("cash");
+				$scope.canvas_cash_show_mes = true;
+			}
+			$scope.paintChartCashPorHora = function(fecha){
+				//var fecha = $scope.selectedFechaToCash;
+				var dataToChart = balanceChartFactory.getDataPorHoras("cash", fecha);
+				$scope.labels_cash_horas = dataToChart.labels;
+				$scope.series_cash_horas = dataToChart.getSeries;
+				$scope.data_cash_horas = [dataToChart.ingresos, dataToChart.gastos]
+				$scope.showChartCashHora = true;
+			}
+
+			$scope.paintChartUnidadOroPorDia = function () {
+				$scope.labels_unidades_oros_dia = balanceChartFactory.getLabelsPorDia();
+				$scope.series_unidades_oros_dia = balanceChartFactory.getSeries();
+				$scope.data_unidades_oros_dia = balanceChartFactory.getDataPorDia("unidades_oros");
+				$scope.canvas_unidades_oros_show_dia = true;
+			}
+			$scope.paintChartUnidadOroPorSemana = function () {
+				$scope.labels_unidades_oros_semana = balanceChartFactory.getLabelsPorSemana();
+				$scope.series_unidades_oros_semana = balanceChartFactory.getSeries();
+				$scope.data_unidades_oros_semana = balanceChartFactory.getDataPorSemana("unidades_oros");
+				$scope.canvas_unidades_oros_show_semana = true;
+			}
+			$scope.paintChartUnidadOroPorMes = function (balance) {
+				$scope.labels_unidades_oros_mes = balance.getLabelsPorMes();
+				$scope.series_unidades_oros_mes = balance.getSeries();
+				$scope.data_unidades_oros_mes = balance.getDataPorMes("unidades_oros");
+				$scope.canvas_unidades_oros_show_mes = true;
+			}
+
+			$scope.paintChartUnidadOroPorHora = function(fecha){
+				//var fecha = $scope.selectedFechaToCash;
+				var dataToChart = balanceChartFactory.getDataPorHoras("unidad_oro", fecha);
+				$scope.labels_unidades_oros_horas = dataToChart.labels;
+				$scope.series_unidades_oros_horas = dataToChart.getSeries;
+				$scope.data_unidades_oros_horas = [dataToChart.ingresos, dataToChart.gastos]
+				$scope.showChartUnidadOroHora = true;
+			}
+
 
 		}])
 
-
+	//Controlador del Modal.
 	controllerModule.controller('detalleEdificoCtrl', function ($scope, $uibModalInstance, items) {
 		$scope.barrio = items.nombreBarrio;
 		$scope.edificio = items.edificio;
