@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="cont-info-usuario left">
-				<img src="template/img/avatar.png" class="left img-avatar" />
+				<img src="template/css/assets/avatar.png" class="left img-avatar" />
 				<ul class="info-user right">
 					<li>Nick: {{user.nick}}</li>
 					<li>Nombre y Apellido: {{user.getFullName()}}</li>
@@ -164,62 +164,32 @@
 					<uib-tabset type="pills">
 						<uib-tab heading="Meses" classes="btn-sm">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
-								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_cash_show_mes"
-									class="chart chart-line"
-									chart-data="data_cash_mes"
-									chart-labels="labels_cash_mes"
-									chart-legend="true"
-									chart-series="series_cash_mes"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_cash_show_mes" class="chart chart-line" chart-data="data_cash_mes" chart-labels="labels_cash_mes" chart-legend="true" chart-series="series_cash_mes" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartCashPorSemana()">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
-								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_cash_show_semana"
-									class="chart chart-line"
-									chart-data="data_cash_semana"
-									chart-labels="labels_cash_semana"
-									chart-legend="true"
-									chart-series="series_cash_semana"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_cash_show_semana" class="chart chart-line" chart-data="data_cash_semana" chart-labels="labels_cash_semana" chart-legend="true" chart-series="series_cash_semana" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Dias" classes="btn-sm" select="paintChartCashPorDia()">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_dia">
-								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_cash_show_dia"
-									class="chart chart-line"
-									chart-data="data_cash_dia"
-									chart-labels="labels_cash_dia"
-									chart-legend="true"
-									chart-series="series_cash_dia"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_cash_show_dia" class="chart chart-line" chart-data="data_cash_dia" chart-labels="labels_cash_dia" chart-legend="true" chart-series="series_cash_dia" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Horas por Dias" classes="btn-sm">
 							<div class="form-group form-inline">
 								<label>Seleccionar fecha</label>
-								<select class="form-control"
-										ng-model="selectedFechaToCash"
-										ng-change="paintChartCashPorHora(selectedFechaToCash)"
-										ng-options="x for x in dayArray">>
-							  </select>
+								<select class="form-control" ng-model="selectedFechaToCash" ng-change="paintChartCashPorHora(selectedFechaToCash)" ng-options="x for x in dayArray">>
+								</select>
 							</div>
-							<canvas ng-show="showChartCashHora"
-									class="chart chart-line"
-									chart-data="data_cash_horas"
-									chart-legend="true"
-									chart-labels="labels_cash_horas"
-									chart-series="series_cash_horas"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="showChartCashHora" class="chart chart-line" chart-data="data_cash_horas" chart-legend="true" chart-labels="labels_cash_horas" chart-series="series_cash_horas" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 					</uib-tabset>
@@ -229,62 +199,32 @@
 					<uib-tabset type="pills">
 						<uib-tab heading="Mensual" classes="btn-sm">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_mes">
-								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_unidades_oros_show_mes"
-									class="chart chart-line"
-									chart-data="data_unidades_oros_mes"
-									chart-legend="true"
-									chart-labels="labels_unidades_oros_mes"
-									chart-series="series_unidades_oros_mes"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_unidades_oros_show_mes" class="chart chart-line" chart-data="data_unidades_oros_mes" chart-legend="true" chart-labels="labels_unidades_oros_mes" chart-series="series_unidades_oros_mes" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartUnidadOroPorSemana()">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_semana">
-								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_unidades_oros_show_semana"
-									class="chart chart-line"
-									chart-data="data_unidades_oros_semana"
-									chart-legend="true"
-									chart-labels="labels_unidades_oros_semana"
-									chart-series="series_unidades_oros_semana"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_unidades_oros_show_semana" class="chart chart-line" chart-data="data_unidades_oros_semana" chart-legend="true" chart-labels="labels_unidades_oros_semana" chart-series="series_unidades_oros_semana" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Dias" classes="btn-sm" select="paintChartUnidadOroPorDia()">
 							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_dia">
-								<h6><i class="fa fa-info-circle"></i> Informacion:</h6>
-								Aqui estaría la información que no se encontraron datos para graficar
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
 							</div>
-							<canvas ng-show="canvas_unidades_oros_show_dia"
-									class="chart chart-line"
-									chart-data="data_unidades_oros_dia"
-									chart-legend="true"
-									chart-labels="labels_unidades_oros_dia"
-									chart-series="series_unidades_oros_dia"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="canvas_unidades_oros_show_dia" class="chart chart-line" chart-data="data_unidades_oros_dia" chart-legend="true" chart-labels="labels_unidades_oros_dia" chart-series="series_unidades_oros_dia" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 						<uib-tab heading="Horas por Dias" classes="btn-sm">
 							<div class="form-group form-inline">
 								<label>Seleccionar fecha:</label>
-								<select class="form-control"
-										ng-model="selectedFechaToUnidadOro"
-										ng-change="paintChartUnidadOroPorHora(selectedFechaToUnidadOro)"
-										ng-options="x for x in dayArray">>
-							  </select>
+								<select class="form-control" ng-model="selectedFechaToUnidadOro" ng-change="paintChartUnidadOroPorHora(selectedFechaToUnidadOro)" ng-options="x for x in dayArray">>
+								</select>
 							</div>
-							<canvas ng-show="showChartUnidadOroHora"
-									class="chart chart-line"
-									chart-data="data_unidades_oros_horas"
-									chart-legend="true"
-									chart-labels="labels_unidades_oros_horas"
-									chart-series="series_unidades_oros_horas"
-									chart-colours="[ '#369ead', '#ad4536']">
+							<canvas ng-show="showChartUnidadOroHora" class="chart chart-line" chart-data="data_unidades_oros_horas" chart-legend="true" chart-labels="labels_unidades_oros_horas" chart-series="series_unidades_oros_horas" chart-colours="[ '#369ead', '#ad4536']">
 							</canvas>
 						</uib-tab>
 					</uib-tabset>
@@ -298,15 +238,15 @@
 		<h5>Medallas</h5>
 		<div class="row">
 			<div class="col-xs-4">
-				<img src="template/img/badge-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<img src="template/css/assets/badge-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
 				<label class="label-medalla">Flexibilidad</label>
 			</div>
 			<div class="col-xs-4">
-				<img src="template/img/medal-pin-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<img src="template/css/assets/medal-pin-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
 				<label class="label-medalla">Innovación</label>
 			</div>
 			<div class="col-xs-4">
-				<img src="template/img/medal-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<img src="template/css/assets/medal-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
 				<label class="label-medalla">Colaboración</label>
 			</div>
 		</div>
@@ -316,27 +256,27 @@
 				<div class="insignias-flexibilidad">
 					<h6 class="text-center">Flexibilidad</h6>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-sm-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 				</div>
@@ -345,19 +285,19 @@
 				<div class="insignias-innovacion">
 					<h6 class="text-center">Innovación</h6>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 
@@ -367,15 +307,15 @@
 				<div class="insignias-colaboración">
 					<h6 class="text-center">Colaboración</h6>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 					<div class="col-xs-4">
-						<img src="template/img/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
 						<label class="insignia-label">fab#</label>
 					</div>
 
@@ -388,11 +328,11 @@
 				<h5 class="text-center titulo-producto">Armería</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-pagelines vc"></i>
+						<img src="template/css/assets/servicios/agrario.png" class="services-ico" />
 						<h5>Seguros Agrario</h5>
 					</div>
 					<div>
-						<i class="fa fa-crosshairs vc"></i>
+						<img src="template/css/assets/servicios/caza.png" class="services-ico" />
 						<h5>Seguros de Caza</h5>
 					</div>
 				</div>
@@ -401,15 +341,15 @@
 				<h5 class="text-center titulo-producto">Pisos</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-life-saver vn"></i>
+						<img src="template/css/assets/servicios/pisos.png" class="services-ico" />
 						<h5>Alquiler a Pisos</h5>
 					</div>
 					<div>
-						<i class="fa fa-home vn"></i>
+						<img src="template/css/assets/servicios/comunidades.png" class="services-ico" />
 						<h5>Comunidades</h5>
 					</div>
 					<div>
-						<i class="fa fa-home vn"></i>
+						<img src="template/css/assets/servicios/hogar.png" class="services-ico" />
 						<h5>Hogar</h5>
 					</div>
 				</div>
@@ -418,11 +358,11 @@
 				<h5 class="text-center titulo-producto">Apartamentos</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-money vc"></i>
+						<img src="template/css/assets/servicios/ahorro.png" class="services-ico" />
 						<h5>Ahorro-Vida</h5>
 					</div>
 					<div>
-						<i class="fa fa-home vn"></i>
+						<img src="template/css/assets/servicios/jubilacion.png" class="services-ico" />
 						<h5>Jubilación</h5>
 					</div>
 				</div>
@@ -431,15 +371,15 @@
 				<h5 class="text-center titulo-producto">Comercio</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-black-tie vc"></i>
+						<img src="template/css/assets/servicios/pymes.png" class="services-ico" />
 						<h5>Seguros para Pymes</h5>
 					</div>
 					<div>
-						<i class="fa fa-balance-scale vc"></i>
+						<img src="template/css/assets/servicios/civil.png" class="services-ico" />
 						<h5>Seguros para Responsabilidad Civil</h5>
 					</div>
 					<div>
-						<i class="fa fa-cc-visa vc"></i>
+						<img src="template/css/assets/servicios/visa.png" class="services-ico" />
 						<h5>Visa Santalucía</h5>
 					</div>
 				</div>
@@ -449,43 +389,43 @@
 				<h5 class="text-center titulo-producto">Hospital</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-plus ac"></i>
+						<img src="template/css/assets/servicios/salud.png" class="services-ico" />
 						<h5>Seguros de Salud</h5>
 					</div>
 					<div>
-						<i class="fa fa-heartbeat ma"></i>
+						<img src="template/css/assets/servicios/vida.png" class="services-ico" />
 						<h5>Seguros de Vida</h5>
 					</div>
 					<div>
-						<i class="fa fa-user-md ma"></i>
+						<img src="template/css/assets/servicios/accidentes.png" class="services-ico" />
 						<h5>Seguro de Accidentes</h5>
 					</div>
 				</div>
 
 			</div>
 			<div class="col-xs-6">
-				<h5 class="text-center producto-titulo">Viajes</h5>
+				<h5 class="text-center titulo-producto">Viajes</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-plane vc"></i>
+						<img src="template/css/assets/servicios/viaje.png" class="services-ico" />
 						<h5>Seguros de viajes</h5>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6">
-				<h5 class="text-center producto-titulo">Decesos</h5>
+				<h5 class="text-center titulo-producto">Decesos</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-ambulance ao"></i>
+						<img src="template/css/assets/servicios/decesos.png" class="services-ico" />
 						<h5>Seguros de Decesos</h5>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6">
-				<h5 class="text-center producto-titulo">Centro Camino</h5>
+				<h5 class="text-center titulo-producto">Centro Camino</h5>
 				<div class="producto-services">
 					<div>
-						<i class="fa fa-paw vc"></i>
+						<img src="template/css/assets/servicios/mascotas.png" class="services-ico" />
 						<h5>Seguros para Mascotas</h5>
 					</div>
 				</div>
