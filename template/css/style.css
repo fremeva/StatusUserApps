@@ -1,4 +1,4 @@
-.left {
+	.left {
 	float: left;
 }
 
@@ -205,8 +205,8 @@
 
 .medalla-img {
 	display: block;
-	width: 120px;
-	padding: 5px;
+	width: 130px;
+	padding: 4px;
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;
@@ -221,7 +221,7 @@
 }
 
 .insignia-image {
-	width: 52px;
+	width: 65px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -230,7 +230,7 @@
 }
 
 .insignia-label {
-	color: rgba(31, 113, 179, .95) !important;
+	color: #333 !important;
 	font-size: 12px;
 	text-align: center;
 	font-weight: normal;
@@ -267,13 +267,13 @@
 }
 
 .producto-services div {
-	    width: 33.33333333%;
-	    float: left;
-	    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-	    box-sizing: border-box;
+	width: 33.33333333%;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	box-sizing: border-box;
 	text-align: center
 	/*display: flex;
 	flex-flow: column;
@@ -298,13 +298,44 @@
 }
 
 .titulo-producto {
-	color: #E94E1a;
-	font-size: 19px;
+	color: #333;
+	font-size: 1rem;
+	margin-bottom: 2.4rem;
+	margin-left: 35px;
+	padding-left: 20px;
 }
 
 img.services-ico {
-	width: 70px;
+	width: 75px;
 	display: block;
-	height: 64px;
+	height: 69px;
 	margin: 0 auto;
 }
+
+.negrita {
+	font-weight: 400;
+}
+
+.new-section {
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+.my-tabs {
+	margin-top: 15px;
+}
+
+.separe-chart {
+	width: 100% !important;
+	height: auto !important;
+	margin-top: 12px !important;
+}
+
+.insignia-titulo-barrio {
+	font-weight: normal !important;
+	margin-bottom: 22px;
+}
+
+.productos-content>div {
+	margin-top: 5px;
+	margin-bottom: 14px

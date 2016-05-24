@@ -63,7 +63,7 @@
 	<script type="text/javascript" src="controller/navController.js"></script>
 	<script type="text/javascript" src="controller/loginController.js"></script>
 	<script type="text/javascript" src="controller/homeController.js"></script>
-	<script type="text/javascript" src="controller/statusController.js"></script>
+	<script type="text/javascript" src="controller/dashboardController.js"></script>
 
 	<!---------- App ------------------------->
 	<script type="text/javascript" src="app.js"></script>
@@ -91,7 +91,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a ui-sref="home" class="waves-effect waves-light">Inicio</a></li>
-						<li><a ui-sref="status" class="waves-effect waves-light">Perfil </a></li>
+						<li><a ui-sref="dashboard" class="waves-effect waves-light">Perfil </a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li ng-show="loggedIn"><a>Hola! {{userNameSession}}</a></li>

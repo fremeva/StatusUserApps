@@ -36,10 +36,10 @@
 					, templateUrl: 'template/views/home.html'
 					, controller: 'homeController'
 				})
-				.state('status', {
-					url: '/status'
-					, templateUrl: 'template/views/status/status.html'
-					, controller: 'statusController'
+				.state('dashboard', {
+					url: '/dashboard'
+					, templateUrl: 'template/views/dashboard/dashboard.html'
+					, controller: 'dashboardController'
 				})
 	}])
 
