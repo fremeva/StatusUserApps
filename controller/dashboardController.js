@@ -1,6 +1,6 @@
 (function () {
 	var controllerModule = angular.module('AppControllers');
-	controllerModule.controller('statusController', ['$scope', '$rootScope', '$location', '_', '$uibTooltip', '$uibModal',
+	controllerModule.controller('dashboardController', ['$scope', '$rootScope', '$location', '_', '$uibTooltip', '$uibModal',
 		'userFactory', 'userService', 'balanceChartFactory', 'patrimonioUserFactory',
 		function ($scope, $rootScope, $location, _, $uibTooltip, $uibModal, userFactory, userService,
 				   balanceChartFactory, patrimonioUserFactory)
@@ -123,7 +123,7 @@
 				}
 				var modalInstance = $uibModal.open({
 					animation: true
-					, templateUrl: 'template/views/status/detalleEdificioModal.html'
+					, templateUrl: 'template/views/dashboard/detalleEdificioModal.html'
 					, controller: 'detalleEdificoCtrl'
 					, resolve: {
 						items: function () {
@@ -188,7 +188,11 @@
 				//var fecha = $scope.selectedFechaToCash;
 				var dataToChart = balanceChartFactory.getDataPorHoras("unidad_oro", fecha);
 				$scope.labels_unidades_oros_horas = dataToChart.labels;
+<<<<<<< HEAD:controller/statusController.js
 				$scope.series_unidades_oros_horas = balanceChartFactory.getSeries();
+=======
+				$scope.series_unidades_oros_horas = balanceChartFactory.getSeries()
+>>>>>>> origin/master:controller/dashboardController.js
 				$scope.data_unidades_oros_horas = [dataToChart.ingresos, dataToChart.gastos]
 				$scope.showChartUnidadOroHora = true;
 			}

@@ -5,8 +5,8 @@
 (function () {
 
 	var controllerModule = angular.module('AppControllers');
-	controllerModule.controller('homeController', ['$scope', 'userService', '$rootScope', 'balanceChartFactory'
-		, function ($scope, userService, $rootScope, balanceChartFactory) {
+	controllerModule.controller('homeController', ['$scope', 'userService', '$rootScope'
+		, function ($scope, userService, $rootScope) {
 			// Funcion para controlar el template home.html
 
     }]);

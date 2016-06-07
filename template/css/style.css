@@ -1,4 +1,4 @@
-.left {
+	.left {
 	float: left;
 }
 
@@ -30,8 +30,8 @@
 	list-style: none;
 }
 
-.list-none label{
-	color:#333;
+.list-none label {
+	color: #333;
 	font-weight: normal;
 	font-size: 14px;
 }
@@ -203,15 +203,13 @@
 	font-weight: bold;
 }
 
-
 .medalla-img {
 	display: block;
-	width: 120px;
-	padding: 5px;
+	width: 130px;
+	padding: 4px;
 	margin-left: auto;
-    margin-right: auto;
+	margin-right: auto;
 	box-sizing: border-box;
-
 }
 
 .label-medalla {
@@ -223,7 +221,7 @@
 }
 
 .insignia-image {
-	width: 52px;
+	width: 65px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -232,15 +230,15 @@
 }
 
 .insignia-label {
-	color: rgba(31,113,179,.95) !important;
-    font-size: 12px;
+	color: #333 !important;
+	font-size: 12px;
 	text-align: center;
 	font-weight: normal;
 	display: block;
 }
 
 
-.vc {
+/*.vc {
 	background-color: #cad639!important;
 }
 
@@ -258,45 +256,56 @@
 
 .ao {
     background-color: #1f71b3!important;
-}
+}*/
 
 .producto-services {
-	display: flex;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-    width: 100%;
+	/*display: flex;
+	justify-content: space-around;
+	text-align: center;
+	align-items: center;*/
+	width: 100%;
 }
 
 .producto-services div {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    padding: 1em;
-    background-color: initial!important;
+	width: 33.33333333%;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	box-sizing: border-box;
+	text-align: center
+	/*display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding: 1em;
+	background-color: initial!important;*/
 }
 
 .producto-services i {
-    font-size: 1.3em;
-    width: 2em;
-    border-radius: 1em;
-    height: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	font-size: 1.3em;
+	width: 2em;
+	border-radius: 1em;
+	height: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .producto-services h5 {
-    color: rgba(31,113,179,.95);
+	color: rgba(31, 113, 179, .95);
 	font-size: 12px;
-
 }
 
 .titulo-producto {
-	color: #E94E1a;
-	font-size: 19px;
+	color: #333;
+	font-size: 1rem;
+	margin-bottom: 2.4rem;
+	margin-left: 35px;
+	padding-left: 20px;
 }
 
+<<<<<<< HEAD
 .modal-header h4 {
     font-size: 19px;
     font-weight: bold;
@@ -305,3 +314,39 @@
 }
 
 
+=======
+img.services-ico {
+	width: 75px;
+	display: block;
+	height: 69px;
+	margin: 0 auto;
+}
+
+.negrita {
+	font-weight: 400;
+}
+
+.new-section {
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+.my-tabs {
+	margin-top: 15px;
+}
+
+.separe-chart {
+	width: 100% !important;
+	height: auto !important;
+	margin-top: 12px !important;
+}
+
+.insignia-titulo-barrio {
+	font-weight: normal !important;
+	margin-bottom: 22px;
+}
+
+.productos-content>div {
+	margin-top: 5px;
+	margin-bottom: 14px
+>>>>>>> origin/master
