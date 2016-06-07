@@ -1,0 +1,407 @@
+<div id="container-status">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="cont-info-usuario left">
+				<img src="template/css/assets/avatar.png" class="left img-avatar" />
+				<ul class="info-user right">
+					<li>Nick: {{user.nick}}</li>
+					<li>Nombre y Apellido: {{user.getFullName()}}</li>
+					<li>Email: {{user.email}}</li>
+					<li>Departamento: {{user.departamento}}</li>
+					<li>Empresa Grupo: {{user.empresa_grupo}}</li>
+					<li>Ciudad: {{user.ciudad}}</li>
+				</ul>
+				<div class="limp"></div>
+			</div>
+		</div>
+		<div class="col-sm-4 info-user-right">
+			<ul class="list-none right">
+				<li>
+					<label>
+						<i class="fa fa-heart {{user.saludObj.state}}-state"></i> Salud: <span>{{user.saludObj.value | number:1 }} %</span></label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+				<li>
+					<i class="fa fa-hard"></i>
+					<label>
+						<i class="fa fa-tasks text-gold-color"></i> Patrimonio: $
+						<span>{{user.getPatrimonio(patrimonioUser.getSumatoriaPrecioVivienda()) | number}}</span>
+					</label>
+					<div class="cont-slider">
+
+					</div>
+				</li>
+				<li>
+					<i class="fa fa-hard"></i>
+					<label><i class="fa fa-signal"></i> Progreso: 33 % <span></span></label>
+					<div class="cont-slider">
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row new-section" id="salud-section">
+		<div class="col-xs-8 col-xs-offset-2" ng-cloak>
+			<h5>Salud: <span class="label_icon-heart {{user.saludObj.state}}-state">{{user.saludObj.state}}</span></h5>
+			<div class="col-sm-3">
+				<i class="fa fa-heart icon-heart {{user.saludObj.state}}-state "></i>
+			</div>
+			<div class="col-sm-9">
+				<rzslider rz-slider-model="sliderSalud.value" rz-slider-options="sliderSalud.options"></rzslider>
+			</div>
+		</div>
+	</div>
+	<div class="row new-section">
+		<div class="col-sm-6">
+			<h5>Patrimonio</h5>
+			<h5>$ {{user.getPatrimonio(patrimonioUser.getSumatoriaPrecioVivienda())| number}} Dips</h5>
+			<div class="row">
+				<div class="col-md-4 col-xs-6">
+					<div class="card ">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive"> {{patrimonioUser.getSumPropConstruida()}} unid </h5>
+							<h6 class="h6-responsive">$ {{patrimonioUser.getSumatoriaPrecioVivienda()| number}} Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6 class="text-center h6-responsive"> <i class="fa fa-building purple-text"></i> Propiedades</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-6">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive">$ {{user.cash | number}}</h5>
+							<h6 class="h6-responsive"> Dips</h6>
+
+						</div>
+						<div class="card-action">
+							<h6 class="text-center h6-responsive"><i class="fa fa-money text-cash-color"></i> Cash</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-6">
+					<div class="card">
+						<div class="card-content text-center">
+							<h5 class="h5-responsive">{{user.unidades_oro}} unid</h5>
+							<h6 class="h6-responsive">$ {{configApp.dips_por_unidad_oro | number}} Dips</h6>
+						</div>
+						<div class="card-action">
+							<h6 class="h6-responsive"><i class="fa fa-tasks text-gold-color"></i> Reservas Oro</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<h5>Performance</h5>
+			<h5>{{user.getPerformance() | number:1}} %</h5>
+			<div class="col-xs-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak flow-text" ng-style="getStyle()">{{ user.energia | number:1 }}%</div>
+					<div round-progress max="100" current="user.energia" color="{{user.getColorEnergia()}}" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Energia</h6>
+			</div>
+			<div class="col-xs-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak flow-text" ng-style="getStyle()">{{ user.compromiso | number:1 }}%</div>
+					<div round-progress max="100" current="user.compromiso" color="{{user.getColorCompromiso()}}" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Compromiso</h6>
+			</div>
+			<div class="col-xs-4">
+				<div class="progress-wrapper">
+					<div class="progress ng-cloak flow-text" ng-style="getStyle()">{{ user.conocimiento }}%</div>
+					<div round-progress max="100" current="user.conocimiento " color="{{user.getColorConocimiento()}}" bgcolor="#eaeaea" radius="120" stroke="28" semi="true" rounded="true" clockwise="true" responsive="true" duration="800" animation="easeInOutQuart" animation-delay="0"></div>
+				</div>
+				<h6 class="text-center">Conocimiento</h6>
+			</div>
+		</div>
+	</div>
+	<div class="row new-section">
+		<div class="col-md-12">
+			<h5>Propiedades construidas / Barrios</h5>
+			<div class="row">
+				<div class="col-xs-12" id="barrio-charts">
+					<div class="col-xs-4">
+						<canvas class="chart chart-doughnut" chart-data="data_flexibilidad" chart-click="onClickFlexibilidad" chart-labels="labels_flexibilidad">
+						</canvas>
+						<h6 class="text-center">Flexibilidad: {{porcent_flexibilidad}}%</h6>
+					</div>
+					<div class="col-xs-4">
+						<canvas class="chart chart-doughnut" chart-data="data_Innovacion" chart-click="onClickInnovacion" chart-labels="labels_Innovacion">
+						</canvas>
+						<h6 class="text-center">Innovacion: {{porcent_innovacion}}%</h6>
+					</div>
+					<div class="col-xs-4">
+						<canvas class="chart chart-doughnut" chart-data="data_Colaboracion" chart-click="onClickColaboracion" chart-labels="labels_Colaboracion">
+						</canvas>
+						<h6 class="text-center">Colaboracion: {{porcent_colaboracion}}%</h6>
+					</div>
+				</div>
+			</div>
+			<div class="row new-section">
+				<div class="col-md-6">
+					<h4 class="text-center text-cash-color"><i class="fa fa-money "></i> Cash</h4>
+					<uib-tabset type="pills" class="my-tabs">
+						<uib-tab heading="Meses" classes="btn-sm">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_cash_show_mes" class="chart chart-line separe-chart" chart-data="data_cash_mes" chart-labels="labels_cash_mes" chart-legend="true" chart-series="series_cash_mes" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartCashPorSemana()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_mes">
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_cash_show_semana" class="chart chart-line separe-chart" chart-data="data_cash_semana" chart-labels="labels_cash_semana" chart-legend="true" chart-series="series_cash_semana" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Dias" classes="btn-sm" select="paintChartCashPorDia()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_cash_show_dia">
+								<h6> <i class="fa fa-info-circle"></i>Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_cash_show_dia" class="chart chart-line separe-chart" chart-data="data_cash_dia" chart-labels="labels_cash_dia" chart-legend="true" chart-series="series_cash_dia" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Horas por Dias" classes="btn-sm">
+							<div class="form-group form-inline">
+								<label>Seleccionar fecha</label>
+								<select class="form-control" ng-model="selectedFechaToCash" ng-change="paintChartCashPorHora(selectedFechaToCash)" ng-options="x for x in dayArray">>
+								</select>
+							</div>
+							<canvas ng-show="showChartCashHora" class="chart chart-line separe-chart" chart-data="data_cash_horas" chart-legend="true" chart-labels="labels_cash_horas" chart-series="series_cash_horas" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+					</uib-tabset>
+				</div>
+				<div class="col-md-6">
+					<h4 class="text-center text-gold-color"><i class="fa fa-tasks"></i> Unidades de Oro</h4>
+					<uib-tabset type="pills">
+						<uib-tab heading="Mensual" classes="btn-sm">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_mes">
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unidades_oros_show_mes" class="chart chart-line separe-chart" chart-data="data_unidades_oros_mes" chart-legend="true" chart-labels="labels_unidades_oros_mes" chart-series="series_unidades_oros_mes" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Semanas" classes="btn-sm" select="paintChartUnidadOroPorSemana()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_semana">
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unidades_oros_show_semana" class="chart chart-line separe-chart" chart-data="data_unidades_oros_semana" chart-legend="true" chart-labels="labels_unidades_oros_semana" chart-series="series_unidades_oros_semana" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Dias" classes="btn-sm" select="paintChartUnidadOroPorDia()">
+							<div class="alert alert-info" role="alert" ng-hide="canvas_unidades_oros_show_dia">
+								<h6><i class="fa fa-info-circle"></i> Informacion:</h6> Aqui estaría la información que no se encontraron datos para graficar
+							</div>
+							<canvas ng-show="canvas_unidades_oros_show_dia" class="chart chart-line separe-chart" chart-data="data_unidades_oros_dia" chart-legend="true" chart-labels="labels_unidades_oros_dia" chart-series="series_unidades_oros_dia" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+						<uib-tab heading="Horas por Dias" classes="btn-sm">
+							<div class="form-group form-inline">
+								<label>Seleccionar fecha:</label>
+								<select class="form-control" ng-model="selectedFechaToUnidadOro" ng-change="paintChartUnidadOroPorHora(selectedFechaToUnidadOro)" ng-options="x for x in dayArray">>
+								</select>
+							</div>
+							<canvas ng-show="showChartUnidadOroHora" class="chart chart-line separe-chart" chart-data="data_unidades_oros_horas" chart-legend="true" chart-labels="labels_unidades_oros_horas" chart-series="series_unidades_oros_horas" chart-colours="[ '#369ead', '#ad4536']">
+							</canvas>
+						</uib-tab>
+					</uib-tabset>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="logros-usuario new-section">
+		<h4 class="negrita">Mis logros</h4>
+		<h5 class=" new-section negrita">Medallas</h5>
+		<div class="row">
+			<div class="col-xs-4">
+				<img src="template/css/assets/badge-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<label class="label-medalla">Flexibilidad</label>
+			</div>
+			<div class="col-xs-4">
+				<img src="template/css/assets/medal-pin-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<label class="label-medalla">Innovación</label>
+			</div>
+			<div class="col-xs-4">
+				<img src="template/css/assets/medal-flat.png" alt="Medalla-flexibilidad" class="img-rounded medalla-img">
+				<label class="label-medalla">Colaboración</label>
+			</div>
+		</div>
+		<h5 class="new-section negrita">Insígnias</h5>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="insignias-flexibilidad">
+					<h6 class="insignia-titulo-barrio">Barrio Flexibilidad</h6>
+					<div class="col-xs-6">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Actitud Positiva</label>
+					</div>
+					<div class="col-xs-6">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Visión</label>
+					</div>
+					<div class="col-xs-6">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Impulso</label>
+					</div>
+					<div class="col-xs-6">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Habilidades del cambio</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="insignias-innovacion">
+					<h6 class="insignia-titulo-barrio">Barrio Innovación</h6>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Innovación 1</label>
+					</div>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Innovación 2</label>
+					</div>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Innovación 3</label>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="insignias-colaboración">
+					<h6 class="insignia-titulo-barrio">Barrio Colaboración</h6>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Colaboración 1</label>
+					</div>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Colaboración 2</label>
+					</div>
+					<div class="col-xs-4">
+						<img src="template/css/assets/LC_Icono_06_128.png" alt="fabrica-flexibilidad" class="img-rounded insignia-image">
+						<label class="insignia-label">Facultad Colaboración 3</label>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<h5 class="new-section negrita">Productos</h5>
+		<div class="row productos-content">
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Armería</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/agrario.png" class="services-ico" />
+						<h5>Seguros Agrario</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/caza.png" class="services-ico" />
+						<h5>Seguros de Caza</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Pisos</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/pisos.png" class="services-ico" />
+						<h5>Alquiler a Pisos</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/comunidades.png" class="services-ico" />
+						<h5>Comunidades</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/hogar.png" class="services-ico" />
+						<h5>Hogar</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Apartamentos</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/ahorro.png" class="services-ico" />
+						<h5>Ahorro-Vida</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/jubilacion.png" class="services-ico" />
+						<h5>Jubilación</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Comercio</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/pymes.png" class="services-ico" />
+						<h5>Seguros para Pymes</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/civil.png" class="services-ico" />
+						<h5>Seguros para Responsabilidad Civil</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/visa.png" class="services-ico" />
+						<h5>Visa Santalucía</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+
+				<h5 class="titulo-producto">Hospital</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/salud.png" class="services-ico" />
+						<h5>Seguros de Salud</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/vida.png" class="services-ico" />
+						<h5>Seguros de Vida</h5>
+					</div>
+					<div>
+						<img src="template/css/assets/servicios/accidentes.png" class="services-ico" />
+						<h5>Seguro de Accidentes</h5>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Viajes</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/viaje.png" class="services-ico" />
+						<h5>Seguros de viajes</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Decesos</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/decesos.png" class="services-ico" />
+						<h5>Seguros de Decesos</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h5 class="titulo-producto">Centro Camino</h5>
+				<div class="producto-services">
+					<div>
+						<img src="template/css/assets/servicios/mascotas.png" class="services-ico" />
+						<h5>Seguros para Mascotas</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
